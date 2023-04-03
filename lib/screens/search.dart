@@ -1,0 +1,179 @@
+import 'package:flutter/material.dart';
+
+import 'package:marketapp/util/products.dart';
+import 'package:marketapp/widgets/prodact%20_item.dart';
+
+class Search extends StatefulWidget {
+  const Search({Key? key}) : super(key: key);
+  @override
+  State createState() => new _Products();
+}
+
+class _Products extends State<Search> {
+  List filters = [
+    "su",
+    "kaşar",
+    "sucuk",
+    "süt",
+    "cips",
+    "yumurta",
+    "tavuk",
+    "dondurma",
+    "tereyağ",
+  ];
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Color(0xFF5AA9E6),
+        centerTitle: true,
+        automaticallyImplyLeading: false,
+        title: Text(
+          'Arama',
+          style: TextStyle(
+            fontFamily: 'Montserrat',
+            color: Colors.white,
+            //fontWeight: FontWeight.w700,
+            fontSize: 16,
+          ),
+        ),
+      ),
+      body: Wrap(
+          runSpacing: 15,
+          //mainAxisSize: MainAxisSize.max,
+          children: [
+            buildSearchInput(context),
+            Column(children: [
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                      padding: EdgeInsets.only(left: 15, bottom: 5),
+                      child: Text(
+                        'Popüler Aramalar',
+                        style: TextStyle(
+                          color: Theme.of(context).focusColor,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      )),
+                  buildFilterRow(context),
+                ],
+              ),
+              SizedBox(
+                height: 15,
+              ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                      padding: EdgeInsets.only(left: 15, bottom: 5),
+                      child: Text(
+                        'Çok Satanlar',
+                        style: TextStyle(
+                          color: Theme.of(context).focusColor,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      )),
+                  buildProductsWrap(context),
+                ],
+              ),
+            ]),
+          ]),
+    );
+  }
+
+  buildSearchInput(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(color: Colors.white, boxShadow: [
+        BoxShadow(
+            color: Colors.grey,
+            blurRadius: 5,
+            spreadRadius: 1,
+            blurStyle: BlurStyle.normal,
+            offset: Offset(0, 3))
+      ]),
+      padding: EdgeInsets.all(15),
+      height: 60,
+      child: TextFormField(
+        //controller: password,
+        cursorHeight: 24,
+        decoration: InputDecoration(
+            fillColor: Colors.white,
+            icon: Icon(
+              Icons.search,
+              size: 30,
+            ), //icon at head of input
+            iconColor: Theme.of(context).accentColor,
+            //labelText: "Ürün Ara",
+            //counterText: 'Ürün ara',
+            hintText: 'Ürün ara'),
+      ),
+    );
+  }
+
+  buildFilterRow(BuildContext context) {
+    return Container(
+      height: 50,
+      decoration: BoxDecoration(
+          color: Colors.white,
+          // border: Border.all(width: 1, color: Colors.grey),
+          boxShadow: [
+            BoxShadow(
+                color: Colors.grey,
+                blurRadius: 5,
+                spreadRadius: 1,
+                blurStyle: BlurStyle.normal,
+                offset: Offset(0, 3))
+          ]),
+      child: ListView(
+        scrollDirection: Axis.horizontal,
+        shrinkWrap: true,
+        children: filters
+            .map((e) => Container(
+                constraints: BoxConstraints(maxHeight: 30),
+                margin: EdgeInsets.all(10),
+                child: OutlinedButton(
+                  child: Text(e),
+                  onPressed: () {},
+                )))
+            .toList(),
+      ),
+    );
+  }
+
+  buildProductsWrap(BuildContext context) {
+    var selected_prd = [];
+
+    products.forEach((prd) {
+      /* if (prd['category_name'] == 'Teknoloji') {
+        selected_prd.add(prd);
+      }*/
+      selected_prd.add(prd);
+    });
+
+    return Container(
+        //height: MediaQuery.of(context).size.height - 440,
+        constraints: BoxConstraints(
+          minHeight: MediaQuery.of(context).size.height - 440,
+          maxHeight: MediaQuery.of(context).size.height - 310,
+        ),
+        color: Colors.white,
+        child: Padding(
+          padding: EdgeInsets.only(top: 8.0),
+          child: ListView(
+              shrinkWrap: true, //only occupies the space it needs
+              children: [
+                Container(
+                  padding: EdgeInsets.only(left: 25),
+                  child: Wrap(
+                    alignment: WrapAlignment.start,
+                    spacing: 16.0,
+                    runSpacing: 8.0,
+                    children:
+                        selected_prd.map((i) => ProductsItem(prod: i)).toList(),
+                  ),
+                ),
+              ]),
+        ));
+  }
+}

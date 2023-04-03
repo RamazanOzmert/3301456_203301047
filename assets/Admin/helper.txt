@@ -1,0 +1,18 @@
+used Widgets:
+wrap 
+text
+scaffold stack 
+image
+container 
+column
+row
+ClipRRect //for border radius
+padding //for only padding
+bottomappbar
+Icon
+IconButton
+Center
+materialApp
+
+
+qemu-system-x86_64
