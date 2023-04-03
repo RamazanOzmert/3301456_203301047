@@ -120,10 +120,12 @@ class UserLogin extends StatelessWidget {
                   flex: 1,
                   fit: FlexFit.tight,
                   child: OutlinedButton.icon(
-                    icon: Icon(
-                      Icons.g_mobiledata,
+                    icon: Image.asset(
+                      'assets/images/google.png',
+                      height: 24,
+                      width: 24,
                     ),
-                    label: Text(
+                    label: const Text(
                       "Google",
                       style:
                           TextStyle(fontSize: 16, fontWeight: FontWeight.w700),

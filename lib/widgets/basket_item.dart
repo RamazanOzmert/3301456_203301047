@@ -12,7 +12,6 @@ class _BasketItem extends State<BasketItem> {
   var adet = 1;
 
   Widget build(BuildContext context) {
-    var _height = 110.0;
     return Container(
       width: MediaQuery.of(context).size.width,
       color: Colors.white,
@@ -21,7 +20,7 @@ class _BasketItem extends State<BasketItem> {
           padding: EdgeInsets.all(15),
           height: 100.0,
           width: MediaQuery.of(context).size.width - 30,
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
               color: Colors.white,
               border: Border(bottom: BorderSide(color: Colors.grey, width: 1))),
           child: Row(
@@ -58,7 +57,7 @@ class _BasketItem extends State<BasketItem> {
                         ),
                         Text(
                           widget.prd!['price'],
-                          style: TextStyle(
+                          style: const TextStyle(
                               fontSize: 15.0,
                               fontWeight: FontWeight.bold,
                               color: Colors.blue),
@@ -97,7 +96,7 @@ class _BasketItem extends State<BasketItem> {
                               adet = adet - 1;
                             });
                           },
-                          child: Center(
+                          child: const Center(
                               child: Icon(
                             Icons.remove,
                             color: Colors.blue,
@@ -111,7 +110,7 @@ class _BasketItem extends State<BasketItem> {
                         child: Center(
                           child: Text(
                             adet.toString(),
-                            style: TextStyle(
+                            style: const TextStyle(
                                 fontWeight: FontWeight.bold,
                                 color: Colors.white),
                           ),
@@ -130,7 +129,7 @@ class _BasketItem extends State<BasketItem> {
                               adet = adet + 1;
                             });
                           },
-                          child: Center(
+                          child: const Center(
                               child: Icon(
                             Icons.add,
                             color: Colors.blue,

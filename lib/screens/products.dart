@@ -27,7 +27,6 @@ class _Products extends State<Products> {
           style: TextStyle(
             fontFamily: 'Montserrat',
             color: Colors.white,
-            //fontWeight: FontWeight.w700,
             fontSize: 16,
           ),
         ),
@@ -77,7 +76,7 @@ class _Products extends State<Products> {
     });
 
     return Container(
-        height: MediaQuery.of(context).size.height - 50 - 94,
+        height: MediaQuery.of(context).size.height - 145,
         child: Padding(
           padding: EdgeInsets.only(top: 8.0),
           child: ListView(
@@ -89,7 +88,7 @@ class _Products extends State<Products> {
                   spacing: 16.0,
                   runSpacing: 8.0,
                   children:
-                      selected_prd.map((i) => ProductsItem(prod: i)).toList(),
+                      selected_prd.map((i) => ProductItem(prod: i)).toList(),
                 ),
               ),
             ],

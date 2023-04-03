@@ -7,8 +7,7 @@ import 'package:marketapp/screens/profile.dart';
 import 'package:marketapp/screens/search.dart';
 
 class MainScreen extends StatefulWidget {
-  //PageController _pageController = PageController();
-
+  const MainScreen({Key? key}) : super(key: key);
   @override
   _MainScreen createState() => _MainScreen();
 }
@@ -17,11 +16,11 @@ class _MainScreen extends State<MainScreen> {
   PageController _pageController = PageController();
   int _page = 0;
   List pages = [
-    Home(),
-    Search(),
-    Basket(),
-    Declaration(),
-    Profile(),
+    const Home(),
+    const Search(),
+    const Basket(),
+    const Declaration(),
+    const Profile(),
   ];
   List icons = [
     Icons.home,
@@ -58,7 +57,7 @@ class _MainScreen extends State<MainScreen> {
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton(
         elevation: 10.0,
-        child: Icon(
+        child: const Icon(
           Icons.shopping_basket,
         ),
         onPressed: () => _pageController.jumpToPage(2),

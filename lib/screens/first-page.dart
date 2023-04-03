@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:marketapp/screens/usrLogin.dart';
 import 'package:marketapp/screens/usrRegister.dart';
 import 'package:marketapp/widgets/logoBar.dart';
-import 'package:marketapp/widgets/main_screeen.dart';
+import 'package:marketapp/screens/main_screeen.dart';
 
 class FirstPage extends StatelessWidget {
   const FirstPage({Key? key}) : super(key: key);
@@ -78,18 +78,6 @@ class FirstPage extends StatelessWidget {
                         onPressed: () {
                           Navigator.of(context).push(MaterialPageRoute(
                               builder: (context) => MainScreen()));
-                          /*Navigator.push(
-                              context,
-
-                              /*MaterialPageRoute(
-                              builder: (context) => NavBar(),
-                            ),*/
-
-                              PageRouteBuilder(
-                                pageBuilder:
-                                    (context, animation, secondaryAnimation) =>
-                                        NavBar(),
-                              ));*/
                         },
                         child: Text(
                           'Üye olmadan devam et',

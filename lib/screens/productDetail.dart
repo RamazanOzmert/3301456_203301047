@@ -1,21 +1,20 @@
 import 'package:flutter/material.dart';
-
 import 'package:marketapp/util/products.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:marketapp/widgets/prodact%20_item.dart';
 
 class ProductDetail extends StatefulWidget {
+  const ProductDetail({Key? key, this.prod}) : super(key: key);
   final Map? prod;
-  ProductDetail({this.prod});
   @override
   State createState() => _ProductDetail();
 }
 
 class _ProductDetail extends State<ProductDetail> {
-  //const ProductDetail({Key? key}) : super(key: key);
   var carpage = 0;
   CarouselController carouselController = CarouselController();
   var ico = true;
+
   @override
   Widget build(BuildContext context) {
     var _height = 200.0;
@@ -26,7 +25,7 @@ class _ProductDetail extends State<ProductDetail> {
         body: Padding(
           padding: EdgeInsets.only(top: 16.0),
           child: Column(children: [
-            //ürün alanı
+            //product
             Container(
               height: MediaQuery.of(context).size.height / 2.7,
               child: ClipRRect(
@@ -42,7 +41,6 @@ class _ProductDetail extends State<ProductDetail> {
                       ),
                     ),
                     Container(
-                      // width: _height,
                       height: _height / 3,
                       padding: EdgeInsets.only(top: 5),
                       child: Column(
@@ -73,7 +71,7 @@ class _ProductDetail extends State<ProductDetail> {
                 ),
               ),
             ),
-            //öneri detay slide alanı
+            //Suggestion-Detail slider
             Column(
               children: [
                 Container(
@@ -217,7 +215,6 @@ class _ProductDetail extends State<ProductDetail> {
         style: TextStyle(
           fontFamily: 'Montserrat',
           color: Colors.white,
-          //fontWeight: FontWeight.w700,
           fontSize: 16,
         ),
       ),
@@ -243,7 +240,6 @@ class _ProductDetail extends State<ProductDetail> {
         style: TextStyle(
           fontFamily: 'Montserrat',
           color: Colors.white,
-          //fontWeight: FontWeight.w700,
           fontSize: 16,
         ),
       ),
@@ -283,7 +279,7 @@ class _ProductDetail extends State<ProductDetail> {
     return Container(
         child: ListView(scrollDirection: Axis.vertical, children: [
       Wrap(
-        children: suggestions.map((i) => ProductsItem(prod: i)).toList(),
+        children: suggestions.map((i) => ProductItem(prod: i)).toList(),
       )
     ]));
   }

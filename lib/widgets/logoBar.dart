@@ -4,7 +4,7 @@ class LogoBar extends StatefulWidget with PreferredSizeWidget {
   @override
   _LogoBar createState() => _LogoBar();
   @override
-  Size get preferredSize => Size.fromHeight(kToolbarHeight);
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 }
 
 class _LogoBar extends State<LogoBar> {

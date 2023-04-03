@@ -12,7 +12,7 @@ class UserRegister extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Color(0xFF5AA9E6),
         centerTitle: true,
-        title: Text(
+        title: const Text(
           'Üye ol',
           style: TextStyle(
             fontFamily: 'Montserrat',
@@ -35,7 +35,7 @@ class UserRegister extends StatelessWidget {
                   initialValue: '90',
 
                   keyboardType: TextInputType.number, //only numbers input
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     border: OutlineInputBorder(),
                     labelText: 'Ülke/Bölge Kodu',
                     labelStyle: TextStyle(fontSize: 14),
@@ -57,7 +57,7 @@ class UserRegister extends StatelessWidget {
                 child: TextFormField(
                   keyboardType: TextInputType.phone,
                   maxLength: 11,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     border: OutlineInputBorder(),
                     hintText: 'Cep Telefonu',
                   ),
@@ -94,10 +94,9 @@ class UserRegister extends StatelessWidget {
           ),
           TextFormField(
             keyboardType: TextInputType.emailAddress,
-            decoration: InputDecoration(
+            decoration: const InputDecoration(
               border: OutlineInputBorder(),
               labelText: 'E-posta',
-              //hintText: 'Enter Password',
             ),
           ),
           //info line
@@ -111,11 +110,8 @@ class UserRegister extends StatelessWidget {
                   fontWeight: FontWeight.w500,
                   color: Theme.of(context).focusColor,
                 ),
-                //style: Theme.of(context).textTheme.bodySmall,
                 children: const <InlineSpan>[
                   WidgetSpan(
-                    // alignment: PlaceholderAlignment.baseline,
-                    //baseline: TextBaseline.alphabetic,
                     child: LinkButton(
                       btnLabel: "Kullanım Koşullarını ",
                     ),
@@ -177,10 +173,12 @@ class UserRegister extends StatelessWidget {
                   flex: 1,
                   fit: FlexFit.tight,
                   child: OutlinedButton.icon(
-                    icon: Icon(
-                      Icons.g_mobiledata,
+                    icon: Image.asset(
+                      'assets/images/google.png',
+                      height: 24,
+                      width: 24,
                     ),
-                    label: Text(
+                    label: const Text(
                       "Google",
                       style:
                           TextStyle(fontSize: 16, fontWeight: FontWeight.w700),
@@ -199,11 +197,11 @@ class UserRegister extends StatelessWidget {
                   fit: FlexFit.tight,
                   child: ElevatedButton.icon(
                     onPressed: () {},
-                    icon: Icon(
+                    icon: const Icon(
                       Icons.facebook_rounded,
                       color: Colors.white,
                     ),
-                    label: Text(
+                    label: const Text(
                       'Facebook',
                       style: TextStyle(
                           fontSize: 16,

@@ -35,7 +35,7 @@ class CategoryItem extends StatelessWidget {
                 Container(
                   height: _height,
                   width: _height,
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                       gradient: LinearGradient(
                     begin: Alignment.topRight,
                     end: Alignment.bottomLeft,
@@ -50,14 +50,14 @@ class CategoryItem extends StatelessWidget {
                 height: _height,
                 width: _height,
                 padding: const EdgeInsets.all(1),
-                constraints: BoxConstraints(
+                constraints: const BoxConstraints(
                   minHeight: 20,
                   minWidth: 20,
                 ),
                 child: Center(
                   child: Text(
                     cat!["name"], //list isn't null
-                    style: TextStyle(
+                    style: const TextStyle(
                       color: Colors.white,
                       fontSize: 20,
                       fontWeight: FontWeight.bold,

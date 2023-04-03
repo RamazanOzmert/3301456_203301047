@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-
 List campaigns = [
   {
     "title": "120 Tl'Lik siparişinize seçili ürünlerde 50 TL indirim!",

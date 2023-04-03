@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-
 List products = [
   {
     "id": 0,
@@ -7,7 +5,7 @@ List products = [
     "name": "Samsung Galaxy S20",
     "property": "Android, Beyaz",
     "price": "419.99",
-    "img": "assets/images/catTeknoloji.jpg",
+    "img": "assets/images/samsung.jpg",
     "details": [],
   },
   {
@@ -65,7 +63,7 @@ List products = [
     "name": "Samsung Galaxy S20",
     "property": "Android, Beyaz",
     "price": "100.99",
-    "img": "assets/images/catTeknoloji.jpg",
+    "img": "assets/images/samsung.jpg",
     "details": [],
   },
   {
@@ -74,7 +72,7 @@ List products = [
     "name": "Samsung Galaxy S20",
     "property": "Android, Beyaz",
     "price": "3359.99",
-    "img": "assets/images/catTeknoloji.jpg",
+    "img": "assets/images/samsung.jpg",
     "details": [],
   },
 ];

@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:marketapp/screens/productDetail.dart';
 
-class ProductsItem extends StatelessWidget {
+class ProductItem extends StatelessWidget {
   final Map? prod;
 
-  ProductsItem({this.prod});
+  ProductItem({this.prod});
 
+  @override
   Widget build(BuildContext context) {
     var _height = 110.0;
     return Container(
@@ -18,9 +19,10 @@ class ProductsItem extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => ProductDetail(
-                          prod: prod,
-                        )),
+                  builder: (context) => ProductDetail(
+                    prod: prod,
+                  ),
+                ),
               );
             },
             child: Column(
@@ -28,14 +30,15 @@ class ProductsItem extends StatelessWidget {
                 Container(
                   width: _height - 10,
                   height: _height - 10,
-                  padding: EdgeInsets.all(8.0),
+                  padding: const EdgeInsets.all(8.0),
                   decoration: BoxDecoration(
                       border: Border.all(
                         strokeAlign: BorderSide.strokeAlignOutside,
                         width: 1,
                         color: Colors.grey,
                       ),
-                      borderRadius: BorderRadius.all(Radius.circular(5.0))),
+                      borderRadius:
+                          const BorderRadius.all(Radius.circular(5.0))),
                   child: Image.asset(
                     prod!['img'], //list isn't null
                     height: _height - 20,
@@ -45,18 +48,20 @@ class ProductsItem extends StatelessWidget {
                 ),
                 Container(
                   width: _height,
-                  padding: EdgeInsets.only(top: 5),
+                  padding: const EdgeInsets.only(top: 5),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(prod!['price']),
                       Text(
                         prod!['name'],
-                        style: TextStyle(fontSize: 12.0, color: Colors.black),
+                        style: const TextStyle(
+                            fontSize: 12.0, color: Colors.black),
                       ),
                       Text(
                         prod!['property'],
-                        style: TextStyle(fontSize: 9.0, color: Colors.grey),
+                        style:
+                            const TextStyle(fontSize: 9.0, color: Colors.grey),
                       ),
                     ],
                   ),
@@ -80,16 +85,16 @@ class ProductsItem extends StatelessWidget {
               //height: 25,*/
               decoration: BoxDecoration(
                   color: Colors.white,
-                  borderRadius: BorderRadius.all(Radius.circular(5.0)),
+                  borderRadius: const BorderRadius.all(Radius.circular(5.0)),
                   boxShadow: [
                     BoxShadow(
                       color: Colors.grey.withOpacity(0.5),
                       spreadRadius: 5,
                       blurRadius: 7,
-                      offset: Offset(0, 3), // changes position of shadow
+                      offset: const Offset(0, 3), // changes position of shadow
                     ),
                   ]),
-              child: Center(
+              child: const Center(
                   child: Icon(
                 Icons.add,
                 color: Colors.blue,

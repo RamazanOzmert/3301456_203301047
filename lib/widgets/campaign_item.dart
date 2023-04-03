@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 class CampaignItem extends StatelessWidget {
   final Map? campaign;
-
   CampaignItem({this.campaign});
 
   Widget build(BuildContext context) {

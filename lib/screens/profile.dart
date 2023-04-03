@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 class Profile extends StatefulWidget {
+  const Profile({Key? key}) : super(key: key);
   @override
   _Profile createState() => _Profile();
 }
@@ -22,7 +23,6 @@ class _Profile extends State<Profile> {
           style: TextStyle(
             fontFamily: 'Montserrat',
             color: Colors.white,
-            //fontWeight: FontWeight.w700,
             fontSize: 16,
           ),
         ),

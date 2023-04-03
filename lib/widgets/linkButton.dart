@@ -20,7 +20,7 @@ class LinkButton extends StatelessWidget {
       },
       child: Text(
         btnLabel,
-        style: TextStyle(
+        style: const TextStyle(
           fontSize: 14,
           fontWeight: FontWeight.w500,
           color: Colors.blue,

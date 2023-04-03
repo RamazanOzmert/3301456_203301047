@@ -114,14 +114,6 @@ class Declaration extends StatelessWidget {
 
   buildSearchInput(BuildContext context) {
     return Container(
-      /*decoration: BoxDecoration(color: Colors.white, boxShadow: [
-        BoxShadow(
-            color: Colors.grey,
-            blurRadius: 5,
-            spreadRadius: 1,
-            blurStyle: BlurStyle.normal,
-            offset: Offset(0, 3))
-      ]),*/
       padding: EdgeInsets.all(15),
       height: 60,
       child: TextFormField(
