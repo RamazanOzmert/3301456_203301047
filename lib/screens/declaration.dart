@@ -14,7 +14,7 @@ class Declaration extends StatelessWidget {
         backgroundColor: Color(0xFF5AA9E6),
         centerTitle: true,
         automaticallyImplyLeading: false,
-        title: Text(
+        title: const Text(
           'Kampanyalar',
           style: TextStyle(
             fontFamily: 'Montserrat',

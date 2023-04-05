@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:marketapp/screens/first-page.dart';
 import 'package:marketapp/util/const.dart';
 
 void main() async {
-  runApp(MyApp());
+  runApp(ProviderScope(child: MyApp()));
 }
 
 class MyApp extends StatefulWidget {
@@ -18,7 +19,7 @@ class _MyAppState extends State<MyApp> {
       debugShowCheckedModeBanner: false,
       title: Constants.appName,
       theme: Constants.lightTheme,
-      home: FirstPage(),
+      home: const FirstPage(),
     );
   }
 }

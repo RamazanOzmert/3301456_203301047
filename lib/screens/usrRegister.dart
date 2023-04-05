@@ -71,7 +71,7 @@ class UserRegister extends StatelessWidget {
                 flex: 1,
                 child: TextFormField(
                   keyboardType: TextInputType.name,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     border: OutlineInputBorder(),
                     hintText: 'Ad',
                   ),
@@ -84,7 +84,7 @@ class UserRegister extends StatelessWidget {
                 flex: 1,
                 child: TextFormField(
                   keyboardType: TextInputType.name,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     border: OutlineInputBorder(),
                     hintText: 'Soyad',
                   ),
@@ -132,7 +132,7 @@ class UserRegister extends StatelessWidget {
                   fixedSize:
                       Size.fromWidth(MediaQuery.of(context).size.width / 1.5)),
               onPressed: () {},
-              child: Text(
+              child: const Text(
                 'Üye Ol',
                 style: TextStyle(fontSize: 18),
               ),
