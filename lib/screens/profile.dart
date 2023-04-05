@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:marketapp/screens/usrprofile.dart';
 
 class Profile extends StatefulWidget {
   const Profile({Key? key}) : super(key: key);
@@ -38,7 +39,14 @@ class _Profile extends State<Profile> {
               leading: Icon(Icons.person),
               title: Text('Giriş yap'),
               selectedTileColor: Colors.orange[100],
-              onTap: () {},
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => UsrProfile(),
+                  ),
+                );
+              },
               trailing: tra_icon,
             ),
           ),
