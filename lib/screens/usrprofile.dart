@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:marketapp/globalStates/user.dart';
-import 'package:marketapp/main.dart';
 
 class UsrProfile extends ConsumerStatefulWidget {
   const UsrProfile({Key? key}) : super(key: key);

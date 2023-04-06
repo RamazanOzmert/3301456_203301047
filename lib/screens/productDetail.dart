@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
+
 import 'package:marketapp/util/products.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:marketapp/widgets/prodact%20_item.dart';
 
 class ProductDetail extends StatefulWidget {
-  const ProductDetail({Key? key, this.prod}) : super(key: key);
-  final Map? prod;
+  const ProductDetail({Key? key, required this.prd}) : super(key: key);
+  final Map prd;
+
   @override
   State createState() => _ProductDetail();
 }
@@ -34,7 +36,7 @@ class _ProductDetail extends State<ProductDetail> {
                   children: [
                     Container(
                       child: Image.asset(
-                        widget.prod!['img'], //list isn't null
+                        widget.prd['img'], //list isn't null
                         height: _height - 30,
                         width: _height - 30,
                         fit: BoxFit.cover,
@@ -48,19 +50,19 @@ class _ProductDetail extends State<ProductDetail> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            widget.prod!['price'],
+                            widget.prd['price'],
                             style: TextStyle(
                                 fontSize: 20,
                                 color: Theme.of(context).accentColor,
                                 fontWeight: FontWeight.bold),
                           ),
                           Text(
-                            widget.prod!['name'],
+                            widget.prd['name'],
                             style:
                                 TextStyle(fontSize: 16.0, color: Colors.black),
                           ),
                           Text(
-                            widget.prod!['property'],
+                            widget.prd['property'],
                             style:
                                 TextStyle(fontSize: 12.0, color: Colors.grey),
                           ),
@@ -152,14 +154,13 @@ class _ProductDetail extends State<ProductDetail> {
                           borderRadius: BorderRadius.circular(10.0),
                         ),
                         child: ListView.builder(
-                          itemCount: widget.prod!['details'].length,
+                          itemCount: widget.prd['details'].length,
                           itemBuilder: (conext, index) => Container(
                               padding: EdgeInsets.only(
                                 bottom: 5,
                               ),
                               child: Text(
-                                '- ' +
-                                    widget.prod!['details'][index].toString(),
+                                '- ' + widget.prd['details'][index].toString(),
                                 style: TextStyle(
                                     fontSize: 13,
                                     color: Color.fromARGB(255, 55, 54, 54)),
@@ -260,13 +261,13 @@ class _ProductDetail extends State<ProductDetail> {
 
   buildSuggestionWrap() {
     var suggestions = [];
-    var prd_cat = widget.prod!['category_name'];
-    var prd_price = double.parse(widget.prod!['price']);
+    var prd_cat = widget.prd['category_name'];
+    var prd_price = double.parse(widget.prd['price']);
     var about_min_price = prd_price - (prd_price * (25 / 100)); // %25 altı
     var about_max_price = prd_price + (prd_price * (25 / 100)); // %25 üstü
 
     products.forEach((p) {
-      if (p != widget.prod) {
+      if (p != widget.prd) {
         if (p['category_name'] == prd_cat) {
           var price = double.parse(p['price']);
           if (price > about_min_price && price < about_max_price) {
@@ -279,7 +280,7 @@ class _ProductDetail extends State<ProductDetail> {
     return Container(
         child: ListView(scrollDirection: Axis.vertical, children: [
       Wrap(
-        children: suggestions.map((i) => ProductItem(prod: i)).toList(),
+        children: suggestions.map((i) => ProductItem(prd: i)).toList(),
       )
     ]));
   }

@@ -7,7 +7,7 @@ class Products extends StatefulWidget {
   const Products({Key? key, required this.category}) : super(key: key);
   final String category;
   @override
-  State createState() => new _Products();
+  State createState() => _Products();
 }
 
 List filters = [
@@ -88,7 +88,7 @@ class _Products extends State<Products> {
                   spacing: 16.0,
                   runSpacing: 8.0,
                   children:
-                      selected_prd.map((i) => ProductItem(prod: i)).toList(),
+                      selected_prd.map((i) => ProductItem(prd: i)).toList(),
                 ),
               ),
             ],

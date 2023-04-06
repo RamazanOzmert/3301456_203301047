@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 class LogoBar extends StatefulWidget with PreferredSizeWidget {
   @override
   _LogoBar createState() => _LogoBar();
+
   @override
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 }

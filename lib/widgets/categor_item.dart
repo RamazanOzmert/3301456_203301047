@@ -2,9 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:marketapp/screens/products.dart';
 
 class CategoryItem extends StatelessWidget {
-  final Map? cat;
-
-  CategoryItem({this.cat});
+  const CategoryItem({Key? key, required this.cat}) : super(key: key);
+  final Map cat;
 
   Widget build(BuildContext context) {
     var _height = 90.0;
@@ -21,13 +20,13 @@ class CategoryItem extends StatelessWidget {
                 context,
                 MaterialPageRoute(
                     builder: (context) =>
-                        Products(category: cat!['name'].toString())),
+                        Products(category: cat['name'].toString())),
               );
             },
             child: Stack(children: <Widget>[
               Stack(children: [
                 Image.asset(
-                  cat!['img'], //list isn't null
+                  cat['img'], //list isn't null
                   height: _height,
                   width: _height,
                   fit: BoxFit.cover,
@@ -56,7 +55,7 @@ class CategoryItem extends StatelessWidget {
                 ),
                 child: Center(
                   child: Text(
-                    cat!["name"], //list isn't null
+                    cat["name"], //list isn't null
                     style: const TextStyle(
                       color: Colors.white,
                       fontSize: 20,

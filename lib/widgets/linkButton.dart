@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 class LinkButton extends StatelessWidget {
   const LinkButton({Key? key, required this.btnLabel}) : super(key: key);
-
   final String btnLabel;
 
   @override

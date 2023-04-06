@@ -2,9 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:marketapp/screens/productDetail.dart';
 
 class ProductItem extends StatelessWidget {
-  final Map? prod;
-
-  ProductItem({this.prod});
+  const ProductItem({Key? key, required this.prd}) : super(key: key);
+  final Map prd;
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +19,7 @@ class ProductItem extends StatelessWidget {
                 context,
                 MaterialPageRoute(
                   builder: (context) => ProductDetail(
-                    prod: prod,
+                    prd: prd,
                   ),
                 ),
               );
@@ -40,7 +39,7 @@ class ProductItem extends StatelessWidget {
                       borderRadius:
                           const BorderRadius.all(Radius.circular(5.0))),
                   child: Image.asset(
-                    prod!['img'], //list isn't null
+                    prd['img'], //list isn't null
                     height: _height - 20,
                     width: _height - 20,
                     fit: BoxFit.cover,
@@ -52,14 +51,14 @@ class ProductItem extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(prod!['price']),
+                      Text(prd['price']),
                       Text(
-                        prod!['name'],
+                        prd['name'],
                         style: const TextStyle(
                             fontSize: 12.0, color: Colors.black),
                       ),
                       Text(
-                        prod!['property'],
+                        prd['property'],
                         style:
                             const TextStyle(fontSize: 9.0, color: Colors.grey),
                       ),

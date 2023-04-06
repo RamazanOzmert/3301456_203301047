@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 class CampaignItem extends StatelessWidget {
+  const CampaignItem({Key? key, this.campaign}) : super(key: key);
   final Map? campaign;
-  CampaignItem({this.campaign});
 
   Widget build(BuildContext context) {
     return Card(

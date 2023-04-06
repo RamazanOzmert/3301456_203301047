@@ -8,12 +8,13 @@ class Profile extends StatefulWidget {
 }
 
 class _Profile extends State<Profile> {
-  var tra_icon = Icon(
-    Icons.chevron_right_rounded,
-    color: Colors.blue,
-  );
   @override
   Widget build(BuildContext context) {
+    var tra_icon = const Icon(
+      Icons.chevron_right_rounded,
+      color: Colors.blue,
+    );
+
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,

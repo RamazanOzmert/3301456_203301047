@@ -159,7 +159,7 @@ class _Products extends State<Search> {
                     spacing: 16.0,
                     runSpacing: 8.0,
                     children:
-                        selected_prd.map((i) => ProductItem(prod: i)).toList(),
+                        selected_prd.map((i) => ProductItem(prd: i)).toList(),
                   ),
                 ),
               ]),

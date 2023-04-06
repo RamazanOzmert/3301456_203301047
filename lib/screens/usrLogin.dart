@@ -11,7 +11,7 @@ class UserLogin extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Color(0xFF5AA9E6),
         centerTitle: true,
-        title: Text(
+        title: const Text(
           'Giriş',
           style: TextStyle(
             fontFamily: 'Montserrat',
@@ -31,9 +31,8 @@ class UserLogin extends StatelessWidget {
                 child: TextFormField(
                   cursorColor: Theme.of(context).canvasColor,
                   initialValue: '90',
-
                   keyboardType: TextInputType.number, //only numbers input
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     border: OutlineInputBorder(),
                     labelText: 'Ülke/Bölge Kodu',
                     labelStyle: TextStyle(fontSize: 14),

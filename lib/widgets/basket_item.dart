@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 class BasketItem extends StatefulWidget {
-  final Map? prd;
+  const BasketItem({Key? key, required this.prd}) : super(key: key);
+  final Map prd;
 
-  BasketItem({this.prd});
   @override
   State createState() => _BasketItem();
 }
@@ -11,6 +11,7 @@ class BasketItem extends StatefulWidget {
 class _BasketItem extends State<BasketItem> {
   var adet = 1;
 
+  @override
   Widget build(BuildContext context) {
     return Container(
       width: MediaQuery.of(context).size.width,
@@ -31,7 +32,7 @@ class _BasketItem extends State<BasketItem> {
                 flex: 1,
                 fit: FlexFit.tight,
                 child: Image.asset(
-                  widget.prd!['img'],
+                  widget.prd['img'],
                   height: 100,
                   width: 100,
                   fit: BoxFit.cover,
@@ -48,15 +49,15 @@ class _BasketItem extends State<BasketItem> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          widget.prd!['name'],
+                          widget.prd['name'],
                           style: TextStyle(fontSize: 13.0, color: Colors.black),
                         ),
                         Text(
-                          widget.prd!['property'],
+                          widget.prd['property'],
                           style: TextStyle(fontSize: 12.0, color: Colors.grey),
                         ),
                         Text(
-                          widget.prd!['price'],
+                          widget.prd['price'],
                           style: const TextStyle(
                               fontSize: 15.0,
                               fontWeight: FontWeight.bold,
