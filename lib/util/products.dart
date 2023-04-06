@@ -1,15 +1,6 @@
 List products = [
   {
-    "id": 0,
-    "category_name": "Teknoloji",
-    "name": "Samsung Galaxy S20",
-    "property": "Android, Beyaz",
-    "price": "419.99",
-    "img": "assets/images/samsung.jpg",
-    "details": [],
-  },
-  {
-    "id": 1,
+    "id": "1",
     "category_name": "Teknoloji",
     "name": "Apple Usb Güç Adaptörü",
     "property": "12 W",
@@ -22,7 +13,7 @@ List products = [
     ]
   },
   {
-    "id": 2,
+    "id": "2",
     "category_name": "icecek",
     "name": "Dimes Meyvesuyu",
     "property": "kayısılı, 1L",
@@ -31,7 +22,7 @@ List products = [
     "details": [],
   },
   {
-    "id": 3,
+    "id": "3",
     "category_name": "icecek",
     "name": "maden suyu",
     "property": "200 ml",
@@ -40,7 +31,7 @@ List products = [
     "details": [],
   },
   {
-    "id": 4,
+    "id": "4",
     "category_name": "temizlik",
     "name": "Pril bulaşık deterjanı",
     "property": "4 L",
@@ -49,7 +40,7 @@ List products = [
     "details": [],
   },
   {
-    "id": 5,
+    "id": "5",
     "category_name": "meyve",
     "name": "elma",
     "property": "1 kg",
@@ -58,7 +49,7 @@ List products = [
     "details": [],
   },
   {
-    "id": 6,
+    "id": "6",
     "category_name": "Teknoloji",
     "name": "Samsung Galaxy S20",
     "property": "Android, Beyaz",
@@ -67,7 +58,7 @@ List products = [
     "details": [],
   },
   {
-    "id": 7,
+    "id": "7",
     "category_name": "Teknoloji",
     "name": "Samsung Galaxy S20",
     "property": "Android, Beyaz",

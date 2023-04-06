@@ -1,18 +1,46 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:marketapp/globalStates/basket.dart';
 
-class BasketItem extends StatefulWidget {
+class BasketItem extends ConsumerStatefulWidget {
   const BasketItem({Key? key, required this.prd}) : super(key: key);
   final Map prd;
 
   @override
-  State createState() => _BasketItem();
+  ConsumerState createState() => _BasketItem();
 }
 
-class _BasketItem extends State<BasketItem> {
-  var adet = 1;
+class _BasketItem extends ConsumerState<BasketItem> {
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  var adet = 0;
+
+  Future getTotal() async {
+    var t;
+    var baskets = ref.watch(basketsProvider);
+    baskets.forEach((e) {
+      if (widget.prd['id'] == e.prdId) {
+        t = int.parse(e.total) ?? 21;
+      }
+    });
+    adet = t;
+  }
+
+  decrease() {
+    ref.read(basketsProvider.notifier).decrease(prdId: widget.prd['id']);
+  }
+
+  increase() {
+    ref.read(basketsProvider.notifier).increase(prdId: widget.prd['id']);
+  }
 
   @override
   Widget build(BuildContext context) {
+    //adet = getTotal();
+    getTotal();
     return Container(
       width: MediaQuery.of(context).size.width,
       color: Colors.white,
@@ -93,9 +121,7 @@ class _BasketItem extends State<BasketItem> {
                             padding: EdgeInsets.zero,
                           ),
                           onPressed: () {
-                            setState(() {
-                              adet = adet - 1;
-                            });
+                            decrease();
                           },
                           child: const Center(
                               child: Icon(
@@ -126,9 +152,7 @@ class _BasketItem extends State<BasketItem> {
                             padding: EdgeInsets.zero,
                           ),
                           onPressed: () {
-                            setState(() {
-                              adet = adet + 1;
-                            });
+                            increase();
                           },
                           child: const Center(
                               child: Icon(

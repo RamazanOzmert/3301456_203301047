@@ -1,9 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:marketapp/globalStates/basket.dart';
 import 'package:marketapp/screens/productDetail.dart';
 
-class ProductItem extends StatelessWidget {
+class ProductItem extends ConsumerStatefulWidget {
   const ProductItem({Key? key, required this.prd}) : super(key: key);
   final Map prd;
+  ConsumerState createState() => _ProductItem();
+}
+
+class _ProductItem extends ConsumerState<ProductItem> {
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +29,7 @@ class ProductItem extends StatelessWidget {
                 context,
                 MaterialPageRoute(
                   builder: (context) => ProductDetail(
-                    prd: prd,
+                    prd: widget.prd,
                   ),
                 ),
               );
@@ -39,7 +49,7 @@ class ProductItem extends StatelessWidget {
                       borderRadius:
                           const BorderRadius.all(Radius.circular(5.0))),
                   child: Image.asset(
-                    prd['img'], //list isn't null
+                    widget.prd['img'], //list isn't null
                     height: _height - 20,
                     width: _height - 20,
                     fit: BoxFit.cover,
@@ -51,14 +61,14 @@ class ProductItem extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(prd['price']),
+                      Text(widget.prd['price']),
                       Text(
-                        prd['name'],
+                        widget.prd['name'],
                         style: const TextStyle(
                             fontSize: 12.0, color: Colors.black),
                       ),
                       Text(
-                        prd['property'],
+                        widget.prd['property'],
                         style:
                             const TextStyle(fontSize: 9.0, color: Colors.grey),
                       ),
@@ -76,9 +86,9 @@ class ProductItem extends StatelessWidget {
               minimumSize: Size.zero,
               padding: EdgeInsets.zero,
             ),
-            onPressed: () {
-              //add basket func
-            },
+            onPressed: () => ref
+                .read(basketsProvider.notifier)
+                .add(Basket(prdId: widget.prd['id'], total: "1")),
             child: Container(
               width: 25,
               //height: 25,*/

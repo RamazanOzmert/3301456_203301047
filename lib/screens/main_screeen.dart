@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:marketapp/screens/basket.dart';
+import 'package:marketapp/screens/basket-page.dart';
 import 'package:marketapp/screens/declaration.dart';
 import 'package:marketapp/screens/home.dart';
 import 'package:marketapp/screens/profile.dart';
@@ -18,7 +18,7 @@ class _MainScreen extends State<MainScreen> {
   List pages = [
     const Home(),
     const Search(),
-    const Basket(),
+    const BasketPage(),
     const Declaration(),
     const Profile(),
   ];

@@ -3,16 +3,22 @@ import 'package:flutter/material.dart';
 import 'package:marketapp/util/products.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:marketapp/widgets/product%20_item.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class ProductDetail extends StatefulWidget {
+class ProductDetail extends ConsumerStatefulWidget {
   const ProductDetail({Key? key, required this.prd}) : super(key: key);
   final Map prd;
 
   @override
-  State createState() => _ProductDetail();
+  ConsumerState createState() => _ProductDetail();
 }
 
-class _ProductDetail extends State<ProductDetail> {
+class _ProductDetail extends ConsumerState<ProductDetail> {
+  @override
+  void initState() {
+    super.initState();
+  }
+
   var carpage = 0;
   CarouselController carouselController = CarouselController();
   var ico = true;
