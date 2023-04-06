@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:marketapp/util/products.dart';
-import 'package:marketapp/widgets/prodact%20_item.dart';
+import 'package:marketapp/widgets/product%20_item.dart';
 
 class Products extends StatefulWidget {
   const Products({Key? key, required this.category}) : super(key: key);

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:marketapp/util/products.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:marketapp/widgets/prodact%20_item.dart';
+import 'package:marketapp/widgets/product%20_item.dart';
 
 class ProductDetail extends StatefulWidget {
   const ProductDetail({Key? key, required this.prd}) : super(key: key);

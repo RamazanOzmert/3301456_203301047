@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:marketapp/util/products.dart';
-import 'package:marketapp/widgets/prodact%20_item.dart';
+import 'package:marketapp/widgets/product%20_item.dart';
 
 class Search extends StatefulWidget {
   const Search({Key? key}) : super(key: key);
