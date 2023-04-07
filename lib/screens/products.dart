@@ -22,7 +22,7 @@ class _Products extends State<Products> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
+        title: const Text(
           'Ürünler',
           style: TextStyle(
             fontFamily: 'Montserrat',
@@ -40,10 +40,13 @@ class _Products extends State<Products> {
         ],
         backgroundColor: Color(0xFF5AA9E6),
       ),
-      body: Column(mainAxisSize: MainAxisSize.max, children: [
-        buildFilterRow(context),
-        buildProductsWrap(context),
-      ]),
+      body: Column(
+        mainAxisSize: MainAxisSize.max,
+        children: [
+          buildFilterRow(context),
+          buildProductsWrap(context),
+        ],
+      ),
     );
   }
 
@@ -76,23 +79,20 @@ class _Products extends State<Products> {
     });
 
     return Container(
-        height: MediaQuery.of(context).size.height - 145,
-        child: Padding(
-          padding: EdgeInsets.only(top: 8.0),
-          child: ListView(
-            children: [
-              Container(
-                padding: EdgeInsets.only(left: 25),
-                child: Wrap(
-                  alignment: WrapAlignment.start,
-                  spacing: 16.0,
-                  runSpacing: 8.0,
-                  children:
-                      selected_prd.map((i) => ProductItem(prd: i)).toList(),
-                ),
+        height: MediaQuery.of(context).size.height - 130,
+        constraints: BoxConstraints(maxWidth: 400),
+        padding: EdgeInsets.all(15),
+        child: ListView(
+          children: [
+            Container(
+              constraints: BoxConstraints(minWidth: 380),
+              child: Wrap(
+                spacing: 10.0,
+                runSpacing: 8.0,
+                children: selected_prd.map((i) => ProductItem(prd: i)).toList(),
               ),
-            ],
-          ),
+            ),
+          ],
         ));
   }
 }

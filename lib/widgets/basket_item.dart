@@ -23,7 +23,7 @@ class _BasketItem extends ConsumerState<BasketItem> {
     var baskets = ref.watch(basketsProvider);
     baskets.forEach((e) {
       if (widget.prd['id'] == e.prdId) {
-        t = int.parse(e.total) ?? 21;
+        t = int.parse(e.total);
       }
     });
     adet = t;

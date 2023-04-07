@@ -25,26 +25,35 @@ class _ProductDetail extends ConsumerState<ProductDetail> {
 
   @override
   Widget build(BuildContext context) {
-    var _height = 200.0;
-
+    var _height = 250.0;
+    var maxhe = MainAxisSize.max;
     List butonlar = ["önerilenler", "detaylar"];
     return Scaffold(
-        appBar: ico ? _defaultBar() : _editingBar(),
-        body: Padding(
-          padding: EdgeInsets.only(top: 16.0),
-          child: Column(children: [
-            //product
-            Container(
-              height: MediaQuery.of(context).size.height / 2.7,
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(8.0),
-                child: Column(
-                  children: [
+      appBar: ico ? _defaultBar() : _editingBar(),
+      body: Container(
+        padding: EdgeInsets.only(top: 16.0),
+        height: MediaQuery.of(context).size.height,
+        child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              //product
+              Container(
+                height: MediaQuery.of(context).size.height / 2.7,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(8.0),
+                  child: Column(children: [
                     Container(
+                      constraints: BoxConstraints(
+                        maxHeight: _height,
+                        maxWidth: _height,
+                      ),
                       child: Image.asset(
                         widget.prd['img'], //list isn't null
-                        height: _height - 30,
-                        width: _height - 30,
+                        // height: _height - 30,
+                        // width: _height - 30,
+                        height: MediaQuery.of(context).size.height / 4,
+                        width: MediaQuery.of(context).size.width / 2,
+
                         fit: BoxFit.cover,
                       ),
                     ),
@@ -52,99 +61,97 @@ class _ProductDetail extends ConsumerState<ProductDetail> {
                       height: _height / 3,
                       padding: EdgeInsets.only(top: 5),
                       child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            widget.prd['price'],
-                            style: TextStyle(
-                                fontSize: 20,
-                                color: Theme.of(context).accentColor,
-                                fontWeight: FontWeight.bold),
-                          ),
-                          Text(
-                            widget.prd['name'],
-                            style:
-                                TextStyle(fontSize: 16.0, color: Colors.black),
-                          ),
-                          Text(
-                            widget.prd['property'],
-                            style:
-                                TextStyle(fontSize: 12.0, color: Colors.grey),
-                          ),
-                        ],
-                      ),
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              widget.prd['price'],
+                              style: TextStyle(
+                                  fontSize: 20,
+                                  color: Theme.of(context).accentColor,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                            Text(
+                              widget.prd['name'],
+                              style: TextStyle(
+                                  fontSize: 16.0, color: Colors.black),
+                            ),
+                            Text(
+                              widget.prd['property'],
+                              style:
+                                  TextStyle(fontSize: 12.0, color: Colors.grey),
+                            ),
+                          ]),
                     )
-                  ],
+                  ]),
                 ),
               ),
-            ),
-            //Suggestion-Detail slider
-            Column(
-              children: [
+              //Suggestion-Detail slider
+              Column(children: [
+                //slider buttons
                 Container(
-                  child: Row(
-                    children: [
-                      Container(
-                        height: 36,
-                        decoration: BoxDecoration(
-                          border: Border(
-                            bottom: carpage == 0
-                                ? BorderSide(
-                                    width: 3,
-                                    color: Colors.yellow,
-                                    style: BorderStyle.solid)
-                                : BorderSide.none,
-                          ),
+                  child: Row(children: [
+                    Container(
+                      height: 40,
+                      decoration: BoxDecoration(
+                        border: Border(
+                          bottom: carpage == 0
+                              ? BorderSide(
+                                  width: 3,
+                                  color: Colors.yellow,
+                                  style: BorderStyle.solid)
+                              : BorderSide.none,
                         ),
-                        child: TextButton(
-                            onPressed: () {
-                              carouselController.animateToPage(0,
-                                  duration: Duration(milliseconds: 500),
-                                  curve: Curves.fastOutSlowIn);
-
-                              setState(() {
-                                carpage = 0;
-                              });
-                            },
-                            child: Text('önerilenler')),
                       ),
-                      Container(
-                        height: 36,
-                        decoration: BoxDecoration(
-                          border: Border(
-                            bottom: carpage == 1
-                                ? BorderSide(
-                                    width: 3,
-                                    color: Colors.yellow,
-                                    style: BorderStyle.solid)
-                                : BorderSide.none,
-                          ),
+                      child: TextButton(
+                          onPressed: () {
+                            carouselController.animateToPage(0,
+                                duration: Duration(milliseconds: 500),
+                                curve: Curves.fastOutSlowIn);
+
+                            setState(() {
+                              carpage = 0;
+                            });
+                          },
+                          child: Text('önerilenler')),
+                    ),
+                    Container(
+                      height: 40,
+                      decoration: BoxDecoration(
+                        border: Border(
+                          bottom: carpage == 1
+                              ? BorderSide(
+                                  width: 3,
+                                  color: Colors.yellow,
+                                  style: BorderStyle.solid)
+                              : BorderSide.none,
                         ),
-                        child: TextButton(
-                            onPressed: () {
-                              carouselController.animateToPage(1,
-                                  duration: Duration(milliseconds: 500),
-                                  curve: Curves.fastOutSlowIn);
-
-                              setState(() {
-                                carpage = 1;
-                              });
-                            },
-                            child: Text('detaylar')),
                       ),
-                    ],
-                  ),
+                      child: TextButton(
+                          onPressed: () {
+                            carouselController.animateToPage(1,
+                                duration: Duration(milliseconds: 500),
+                                curve: Curves.fastOutSlowIn);
+
+                            setState(() {
+                              carpage = 1;
+                            });
+                          },
+                          child: Text('detaylar')),
+                    ),
+                  ]),
                 ),
                 //carousel Slider
+
                 Container(
+                  constraints: BoxConstraints(),
                   padding: EdgeInsets.only(top: 5, left: 15, right: 15),
                   decoration:
                       BoxDecoration(color: Color.fromARGB(255, 237, 237, 237)),
                   child: CarouselSlider(
                     carouselController: carouselController,
                     items: [
-                      // birinci slayt
+                      //suggestion slayt
                       Container(
                         width: MediaQuery.of(context).size.width,
                         margin: EdgeInsets.only(top: 8),
@@ -153,7 +160,7 @@ class _ProductDetail extends ConsumerState<ProductDetail> {
                         ),
                         child: buildSuggestionWrap(),
                       ),
-                      //ikinci slayt
+                      //details slayt
                       Container(
                         width: MediaQuery.of(context).size.width,
                         decoration: BoxDecoration(
@@ -192,27 +199,35 @@ class _ProductDetail extends ConsumerState<ProductDetail> {
                     ),
                   ),
                 ),
-              ],
-            ),
-            //button: 'Sepete Ekle'
-            Container(
-              width: MediaQuery.of(context).size.width,
-              padding: EdgeInsets.all(10),
-              decoration: BoxDecoration(
-                  border:
-                      Border(top: BorderSide(color: Colors.grey, width: 1))),
-              child: ElevatedButton(
-                onPressed: () {
-                  //add basket func
-                },
-                child: Text(
-                  'Sepete Ekle',
-                  style: TextStyle(fontSize: 16),
+              ]),
+              //
+              //button: 'Sepete Ekle'
+              Align(
+                alignment: Alignment.bottomCenter,
+                child: Container(
+                  width: MediaQuery.of(context).size.width,
+                  constraints: BoxConstraints(
+                    maxHeight: 70,
+                  ),
+                  height: 70,
+                  padding: EdgeInsets.all(10),
+                  decoration: BoxDecoration(
+                      border: Border(
+                          top: BorderSide(color: Colors.grey, width: 1))),
+                  child: ElevatedButton(
+                    onPressed: () {
+                      //add basket func
+                    },
+                    child: Text(
+                      'Sepete Ekle',
+                      style: TextStyle(fontSize: 16),
+                    ),
+                  ),
                 ),
               ),
-            )
-          ]),
-        ));
+            ]),
+      ),
+    );
   }
 
   _defaultBar() {

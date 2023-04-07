@@ -21,6 +21,7 @@ class _ProductItem extends ConsumerState<ProductItem> {
     return Container(
       width: _height,
       child: Stack(children: [
+        //product
         ClipRRect(
           borderRadius: BorderRadius.circular(8.0),
           child: TextButton(
@@ -36,6 +37,7 @@ class _ProductItem extends ConsumerState<ProductItem> {
             },
             child: Column(
               children: [
+                //product image
                 Container(
                   width: _height - 10,
                   height: _height - 10,
@@ -49,12 +51,14 @@ class _ProductItem extends ConsumerState<ProductItem> {
                       borderRadius:
                           const BorderRadius.all(Radius.circular(5.0))),
                   child: Image.asset(
-                    widget.prd['img'], //list isn't null
+                    widget.prd['img'],
                     height: _height - 20,
                     width: _height - 20,
                     fit: BoxFit.cover,
                   ),
                 ),
+
+                //product information
                 Container(
                   width: _height,
                   padding: const EdgeInsets.only(top: 5),
@@ -79,6 +83,7 @@ class _ProductItem extends ConsumerState<ProductItem> {
             ),
           ),
         ),
+        //button 'add basket'
         Align(
           alignment: Alignment.topRight,
           child: TextButton(
@@ -91,7 +96,6 @@ class _ProductItem extends ConsumerState<ProductItem> {
                 .add(Basket(prdId: widget.prd['id'], total: "1")),
             child: Container(
               width: 25,
-              //height: 25,*/
               decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: const BorderRadius.all(Radius.circular(5.0)),

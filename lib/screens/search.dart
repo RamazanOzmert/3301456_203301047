@@ -62,14 +62,15 @@ class _Products extends State<Search> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
-                  padding: EdgeInsets.only(left: 15, bottom: 5),
-                  child: Text(
-                    'Çok Satanlar',
-                    style: TextStyle(
-                      color: Theme.of(context).focusColor,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  )),
+                padding: EdgeInsets.only(left: 15, bottom: 5),
+                child: Text(
+                  'Çok Satanlar',
+                  style: TextStyle(
+                    color: Theme.of(context).focusColor,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+              ),
               buildProductsWrap(context),
             ],
           ),
@@ -142,27 +143,25 @@ class _Products extends State<Search> {
     });
 
     return Container(
-        constraints: BoxConstraints(
-          minHeight: MediaQuery.of(context).size.height - 440,
-          maxHeight: MediaQuery.of(context).size.height - 310,
+      constraints: BoxConstraints(
+        minHeight: MediaQuery.of(context).size.height - 440,
+        maxHeight: MediaQuery.of(context).size.height - 310,
+      ),
+      color: Colors.white,
+      child: ListView(scrollDirection: Axis.vertical, children: [
+        Container(
+          padding: const EdgeInsets.all(10),
+          constraints: BoxConstraints(maxWidth: 390),
+          child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+            Wrap(
+              //alignment: WrapAlignment.spaceBetween,
+              spacing: 8.0,
+              runSpacing: 8.0,
+              children: selected_prd.map((i) => ProductItem(prd: i)).toList(),
+            ),
+          ]),
         ),
-        color: Colors.white,
-        child: Padding(
-          padding: EdgeInsets.only(top: 8.0),
-          child: ListView(
-              shrinkWrap: true, //only occupies the space it needs
-              children: [
-                Container(
-                  padding: EdgeInsets.only(left: 25),
-                  child: Wrap(
-                    alignment: WrapAlignment.start,
-                    spacing: 16.0,
-                    runSpacing: 8.0,
-                    children:
-                        selected_prd.map((i) => ProductItem(prd: i)).toList(),
-                  ),
-                ),
-              ]),
-        ));
+      ]),
+    );
   }
 }

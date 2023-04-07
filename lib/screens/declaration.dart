@@ -25,7 +25,7 @@ class Declaration extends StatelessWidget {
         ),
       ),
       body: Padding(
-        padding: EdgeInsets.all(15),
+        padding: EdgeInsets.all(10),
         child: ListView(
           children: [
             //button: 'add campaign'

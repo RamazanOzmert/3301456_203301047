@@ -6,7 +6,7 @@ class CategoryItem extends StatelessWidget {
   final Map cat;
 
   Widget build(BuildContext context) {
-    var _height = 90.0;
+    var _height = 180.0;
     return Container(
       child: Stack(children: [
         ClipRRect(
@@ -39,8 +39,8 @@ class CategoryItem extends StatelessWidget {
                     begin: Alignment.topRight,
                     end: Alignment.bottomLeft,
                     colors: [
-                      Color.fromARGB(90, 136, 168, 248),
-                      Color.fromARGB(108, 44, 88, 158),
+                      Color.fromARGB(108, 51, 78, 120),
+                      Color.fromARGB(108, 19, 29, 48),
                     ],
                   )),
                 ),
