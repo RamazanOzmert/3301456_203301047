@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:marketapp/screens/first-page.dart';
+import 'package:marketapp/screens/first_screen.dart';
 import 'package:marketapp/util/const.dart';
 
 void main() async {

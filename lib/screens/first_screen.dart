@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-import 'package:marketapp/screens/usrLogin.dart';
-import 'package:marketapp/screens/usrRegister.dart';
-import 'package:marketapp/widgets/logoBar.dart';
-import 'package:marketapp/screens/main_screeen.dart';
+import 'package:marketapp/screens/usr_login.dart';
+import 'package:marketapp/screens/usr_register.dart';
+import 'package:marketapp/widgets/logo_bar.dart';
+import 'package:marketapp/screens/main_screen.dart';
 
 class FirstPage extends StatelessWidget {
   const FirstPage({Key? key}) : super(key: key);

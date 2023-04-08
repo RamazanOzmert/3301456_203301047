@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'package:marketapp/util/categories.dart';
 import 'package:marketapp/widgets/address_row.dart';
-import 'package:marketapp/widgets/categor_item.dart';
-import 'package:marketapp/widgets/logoBar.dart';
+import 'package:marketapp/widgets/category_item.dart';
+import 'package:marketapp/widgets/logo_bar.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);

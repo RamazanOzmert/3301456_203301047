@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-import 'package:marketapp/screens/basket-page.dart';
+import 'basket_screen.dart';
 import 'package:marketapp/screens/declaration.dart';
 import 'package:marketapp/screens/home.dart';
 import 'package:marketapp/screens/profile.dart';
-import 'package:marketapp/screens/search.dart';
+import 'package:marketapp/screens/search_screen.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({Key? key}) : super(key: key);

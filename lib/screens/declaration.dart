@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:marketapp/util/campaigns.dart';
 import 'package:marketapp/widgets/campaign_item.dart';
-import 'package:marketapp/widgets/logoBar.dart';
+import 'package:marketapp/widgets/logo_bar.dart';
 
 class Declaration extends StatelessWidget {
   const Declaration({Key? key}) : super(key: key);

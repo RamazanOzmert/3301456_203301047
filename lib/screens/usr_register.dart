@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'package:marketapp/screens/usrLogin.dart';
-import 'package:marketapp/widgets/linkButton.dart';
+import 'package:marketapp/screens/usr_login.dart';
+import 'package:marketapp/widgets/link_button.dart';
 
 class UserRegister extends StatelessWidget {
   const UserRegister({Key? key}) : super(key: key);

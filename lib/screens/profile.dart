@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:marketapp/screens/usrprofile.dart';
+import 'package:marketapp/screens/usr_profile.dart';
 
 class Profile extends StatefulWidget {
   const Profile({Key? key}) : super(key: key);

@@ -79,7 +79,7 @@ class _Products extends State<Products> {
     });
 
     return Container(
-        height: MediaQuery.of(context).size.height - 130,
+        height: MediaQuery.of(context).size.height - 150,
         constraints: BoxConstraints(maxWidth: 400),
         padding: EdgeInsets.all(15),
         child: ListView(

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:marketapp/globalStates/basket.dart';
-import 'package:marketapp/screens/productDetail.dart';
+import 'package:marketapp/screens/product_detail.dart';
 
 class ProductItem extends ConsumerStatefulWidget {
   const ProductItem({Key? key, required this.prd}) : super(key: key);
