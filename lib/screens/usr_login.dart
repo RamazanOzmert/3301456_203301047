@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:marketapp/screens/usrRegister.dart';
+import 'package:marketapp/screens/usr_register.dart';
 
 class UserLogin extends StatelessWidget {
   const UserLogin({Key? key}) : super(key: key);
