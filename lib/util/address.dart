@@ -2,7 +2,7 @@ List address = [
   {
     "id": 0,
     "name": "ev",
-    "address": "pınar mah hadana seyhan 0",
+    "address": "pınar mah adana seyhan 0",
   },
   {
     "id": 1,
@@ -19,19 +19,4 @@ List address = [
     "name": "adres3",
     "address": "pınar mah adana seyhan 3",
   },
-  {
-    "id": 3,
-    "name": "adres3",
-    "address": "pınar mah adana seyhan 4",
-  },
-  {
-    "id": 3,
-    "name": "adres3",
-    "address": "pınar mah adana seyhan 5",
-  },
-  {
-    "id": 3,
-    "name": "adres3",
-    "address": "pınar mah adana seyhan 6",
-  }
 ];
