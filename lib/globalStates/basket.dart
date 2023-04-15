@@ -52,6 +52,12 @@ class BasketNotifier extends StateNotifier<List<Basket>> {
     for (final item in state) {
       if (item.prdId == prdId) {
         var t = int.parse(item.total) - 1;
+        if (t == 0) {
+          state = [
+            for (final item in state)
+              if (item.prdId != prdId) item
+          ];
+        }
         Basket basket = Basket(prdId: prdId, total: t.toString());
         state = [
           for (final item in state)

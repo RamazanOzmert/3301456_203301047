@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:marketapp/globalStates/basket.dart';
 
 import 'package:marketapp/util/products.dart';
 import 'package:carousel_slider/carousel_slider.dart';
@@ -215,9 +216,9 @@ class _ProductDetail extends ConsumerState<ProductDetail> {
                       border: Border(
                           top: BorderSide(color: Colors.grey, width: 1))),
                   child: ElevatedButton(
-                    onPressed: () {
-                      //add basket func
-                    },
+                    onPressed: () => ref
+                        .read(basketsProvider.notifier)
+                        .add(Basket(prdId: widget.prd['id'], total: "1")),
                     child: Text(
                       'Sepete Ekle',
                       style: TextStyle(fontSize: 16),
