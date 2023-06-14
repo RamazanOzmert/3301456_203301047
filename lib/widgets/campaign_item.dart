@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:marketapp/screens/declaration_detail.dart';
 
 class CampaignItem extends StatelessWidget {
   const CampaignItem({Key? key, this.campaign}) : super(key: key);
@@ -34,13 +35,22 @@ class CampaignItem extends StatelessWidget {
                 children: [
                   Container(
                     constraints: BoxConstraints(maxWidth: 280),
-                    child: Text(campaign!['conditions']),
+                    child: Text('Kampanya koşullarını incele'),
                   ),
                   Container(
                     height: 35,
                     width: 35,
                     child: ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => DeclarationDetail(
+                              campaign: campaign,
+                            ),
+                          ),
+                        );
+                      },
                       style: TextButton.styleFrom(
                           padding: EdgeInsets.zero,
                           foregroundColor: Colors.blue[300],

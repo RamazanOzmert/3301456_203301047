@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:marketapp/screens/profil_address.dart';
 import 'package:marketapp/screens/usr_profile.dart';
 
 class Profile extends StatefulWidget {
@@ -69,7 +70,14 @@ class _Profile extends State<Profile> {
                     child: ListTile(
                       leading: Icon(Icons.location_on),
                       title: Text('adreslerim'),
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => ProfileAddress(),
+                          ),
+                        );
+                      },
                       trailing: tra_icon,
                     ),
                   ),

@@ -1,18 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:marketapp/util/address.dart';
+import 'package:marketapp/globalStates/address.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:marketapp/screens/profil_address.dart';
 
-class AddressRow extends StatefulWidget {
+class AddressRow extends ConsumerStatefulWidget {
   const AddressRow({Key? key, this.adress}) : super(key: key);
   final adress;
   @override
-  State createState() => _AddressRow();
+  ConsumerState<AddressRow> createState() => _AddressRow();
 }
 
-class _AddressRow extends State<AddressRow> {
-  var selected;
+class _AddressRow extends ConsumerState<AddressRow> {
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  dynamic selected;
   @override
   Widget build(BuildContext context) {
     var adress = selected ?? "Lütfen bir adres seçin";
+
     return Container(
       color: Color(0xFFFFE45E),
       constraints: BoxConstraints(
@@ -50,7 +59,7 @@ class _AddressRow extends State<AddressRow> {
             Expanded(
               flex: 1,
               child: Container(
-                constraints: BoxConstraints(
+                constraints: const BoxConstraints(
                   minHeight: 48.0,
                   maxHeight: 50.0,
                 ),
@@ -60,7 +69,7 @@ class _AddressRow extends State<AddressRow> {
                   children: <Widget>[
                     Column(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
+                      children: const [
                         Text('Minimum',
                             style: TextStyle(
                               fontSize: 12.0,
@@ -71,12 +80,12 @@ class _AddressRow extends State<AddressRow> {
                             )),
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 5.0,
                     ),
                     Column(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
+                      children: const [
                         Text('Gönderim',
                             style: TextStyle(
                               fontSize: 11.0,
@@ -100,7 +109,8 @@ class _AddressRow extends State<AddressRow> {
   }
 
   buildModalBottomSheet(BuildContext context) {
-    return showModalBottomSheet<void>(
+    var adr = ref.watch(addressesProvider);
+    return showModalBottomSheet<State>(
       context: context,
       builder: (BuildContext context) {
         return Container(
@@ -164,7 +174,14 @@ class _AddressRow extends State<AddressRow> {
                           decoration: TextDecoration.underline,
                         ),
                       ),
-                      onPressed: () {},
+                      onPressed: () => {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => ProfileAddress(),
+                          ),
+                        )
+                      },
                     ),
                   ],
                 ),
@@ -178,20 +195,20 @@ class _AddressRow extends State<AddressRow> {
                 color: Theme.of(context).backgroundColor,
                 child: ListView(
                   scrollDirection: Axis.vertical,
-                  children: address
+                  children: adr
                       .map(
                         (e) => ListTile(
                           leading: Radio(
-                            value: e['address'].toString(),
-                            groupValue: selected,
+                            value: e.address,
+                            groupValue: adr,
                             onChanged: (value) {
                               setState(() {
                                 selected = value.toString();
                               });
                             },
                           ),
-                          title: Text(e['name'].toString()),
-                          subtitle: Text(e['address'].toString()),
+                          title: Text(e.name),
+                          subtitle: Text(e.address),
                         ),
                       )
                       .toList(),
