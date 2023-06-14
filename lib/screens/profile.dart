@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:marketapp/screens/languages.dart';
 import 'package:marketapp/screens/profil_address.dart';
 import 'package:marketapp/screens/usr_profile.dart';
 
@@ -124,11 +125,20 @@ class _Profile extends State<Profile> {
                       borderRadius: BorderRadius.all(Radius.zero)),
                   margin: EdgeInsets.zero,
                   color: Colors.white,
-                  child: ListTile(
-                      leading: Icon(Icons.language),
-                      title: Text('Türkçe'),
-                      onTap: () {},
-                      trailing: tra_icon),
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => Languages(),
+                        ),
+                      );
+                    },
+                    child: ListTile(
+                        leading: Icon(Icons.language),
+                        title: Text('Türkçe'),
+                        trailing: tra_icon),
+                  ),
                 ),
               ],
             ),
