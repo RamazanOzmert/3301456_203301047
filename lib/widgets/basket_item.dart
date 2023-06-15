@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:marketapp/globalStates/basket.dart';
+import 'package:marketapp/globalStates/favorites.dart';
 
 class BasketItem extends ConsumerStatefulWidget {
   const BasketItem({Key? key, required this.prd}) : super(key: key);
@@ -30,24 +31,42 @@ class _BasketItem extends ConsumerState<BasketItem> {
   }
 
   decrease() {
-    ref.read(basketsProvider.notifier).decrease(prdId: widget.prd['id']);
+    ref.read(basketsProvider.notifier).decrease(
+          prdId: widget.prd['id'],
+        );
   }
 
   increase() {
-    ref.read(basketsProvider.notifier).increase(prdId: widget.prd['id']);
+    ref.read(basketsProvider.notifier).increase(
+          prdId: widget.prd['id'],
+        );
+  }
+
+  updateFavorite() {
+    ref.read(favoriteProvider.notifier).update(
+          Favorite(prdId: widget.prd['id']),
+        );
+    getFav();
+  }
+
+  var isFav;
+  getFav() {
+    var favPrd = ref.watch(favoriteProvider);
+    isFav = favPrd.any((element) => element.prdId == widget.prd['id']);
   }
 
   @override
   Widget build(BuildContext context) {
-    //adet = getTotal();
+    var favPrd = ref.watch(favoriteProvider);
     getTotal();
+    getFav();
     return Container(
       width: MediaQuery.of(context).size.width,
       color: Colors.white,
       child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
         Container(
           padding: EdgeInsets.all(15),
-          height: 100.0,
+          height: 105.0,
           width: MediaQuery.of(context).size.width - 30,
           decoration: const BoxDecoration(
               color: Colors.white,
@@ -97,72 +116,91 @@ class _BasketItem extends ConsumerState<BasketItem> {
               Flexible(
                 flex: 1,
                 fit: FlexFit.tight,
-                child: Container(
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.all(Radius.circular(5.0)),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey.withOpacity(0.2),
-                          spreadRadius: 5,
-                          blurRadius: 7,
-                          offset: Offset(0, 3), // changes position of shadow
-                        ),
-                      ]),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Container(
-                        width: 20,
-                        height: 25,
-                        child: TextButton(
-                          style: TextButton.styleFrom(
-                            minimumSize: Size.zero,
-                            padding: EdgeInsets.zero,
+                child: Column(
+                  children: [
+                    Container(
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.all(Radius.circular(5.0)),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey.withOpacity(0.2),
+                              spreadRadius: 5,
+                              blurRadius: 7,
+                              offset:
+                                  Offset(0, 3), // changes position of shadow
+                            ),
+                          ]),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Container(
+                            width: 20,
+                            height: 25,
+                            child: TextButton(
+                              style: TextButton.styleFrom(
+                                minimumSize: Size.zero,
+                                padding: EdgeInsets.zero,
+                              ),
+                              onPressed: () {
+                                decrease();
+                              },
+                              child: const Center(
+                                  child: Icon(
+                                Icons.remove,
+                                color: Colors.blue,
+                              )),
+                            ),
                           ),
-                          onPressed: () {
-                            decrease();
-                          },
-                          child: const Center(
-                              child: Icon(
-                            Icons.remove,
-                            color: Colors.blue,
-                          )),
-                        ),
-                      ),
-                      Container(
-                        width: 30,
-                        height: 25,
-                        color: Colors.blue[400],
-                        child: Center(
-                          child: Text(
-                            adet.toString(),
-                            style: const TextStyle(
-                                fontWeight: FontWeight.bold,
-                                color: Colors.white),
+                          Container(
+                            width: 30,
+                            height: 25,
+                            color: Colors.blue[400],
+                            child: Center(
+                              child: Text(
+                                adet.toString(),
+                                style: const TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white),
+                              ),
+                            ),
                           ),
-                        ),
-                      ),
-                      Container(
-                        width: 20,
-                        height: 25,
-                        child: TextButton(
-                          style: TextButton.styleFrom(
-                            minimumSize: Size.zero,
-                            padding: EdgeInsets.zero,
+                          Container(
+                            width: 20,
+                            height: 25,
+                            child: TextButton(
+                              style: TextButton.styleFrom(
+                                minimumSize: Size.zero,
+                                padding: EdgeInsets.zero,
+                              ),
+                              onPressed: () {
+                                increase();
+                              },
+                              child: const Center(
+                                  child: Icon(
+                                Icons.add,
+                                color: Colors.blue,
+                              )),
+                            ),
                           ),
-                          onPressed: () {
-                            increase();
-                          },
-                          child: const Center(
-                              child: Icon(
-                            Icons.add,
-                            color: Colors.blue,
-                          )),
-                        ),
+                        ],
                       ),
-                    ],
-                  ),
+                    ),
+                    Container(
+                      child: isFav
+                          ? IconButton(
+                              onPressed: () {
+                                updateFavorite();
+                              },
+                              icon: const Icon(Icons.star))
+                          : IconButton(
+                              onPressed: () {
+                                updateFavorite();
+                              },
+                              icon: const Icon(Icons.star_border),
+                            ),
+                    ),
+                  ],
                 ),
               ),
             ],

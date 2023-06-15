@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:marketapp/screens/languages.dart';
 import 'package:marketapp/screens/profil_address.dart';
+import 'package:marketapp/screens/usr_favories.dart';
 import 'package:marketapp/screens/usr_profile.dart';
 
 class Profile extends StatefulWidget {
@@ -34,6 +35,7 @@ class _Profile extends State<Profile> {
       body: Padding(
         padding: EdgeInsets.only(top: 15),
         child: Wrap(runSpacing: 15, children: [
+          //giriş yap
           Card(
             elevation: 2,
             margin: EdgeInsets.zero,
@@ -53,6 +55,7 @@ class _Profile extends State<Profile> {
               trailing: tra_icon,
             ),
           ),
+          //ekler
           Card(
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.all(Radius.zero)),
@@ -62,6 +65,7 @@ class _Profile extends State<Profile> {
             child: Container(
               child: Column(
                 children: [
+                  //adresler
                   Card(
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.all(Radius.zero)),
@@ -82,6 +86,7 @@ class _Profile extends State<Profile> {
                       trailing: tra_icon,
                     ),
                   ),
+                  //favoriler
                   Card(
                     elevation: 0,
                     shape: RoundedRectangleBorder(
@@ -91,10 +96,18 @@ class _Profile extends State<Profile> {
                     child: ListTile(
                       leading: Icon(Icons.star),
                       title: Text('Favoriler'),
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => UserFavories(),
+                          ),
+                        );
+                      },
                       trailing: tra_icon,
                     ),
                   ),
+                  //yardım
                   Card(
                     elevation: 0,
                     shape: RoundedRectangleBorder(
@@ -112,6 +125,7 @@ class _Profile extends State<Profile> {
               ),
             ),
           ),
+          // Dİl
           Container(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -143,6 +157,7 @@ class _Profile extends State<Profile> {
               ],
             ),
           ),
+          //versiyon
           Container(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
