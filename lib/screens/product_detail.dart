@@ -1,5 +1,7 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:marketapp/globalStates/basket.dart';
+import 'package:marketapp/globalStates/favorites.dart';
 
 import 'package:marketapp/util/products.dart';
 import 'package:carousel_slider/carousel_slider.dart';
@@ -20,17 +22,31 @@ class _ProductDetail extends ConsumerState<ProductDetail> {
     super.initState();
   }
 
+  var isFav;
+  getFav() {
+    var favPrd = ref.watch(favoriteProvider);
+    isFav = favPrd.any((element) => element.prdId == widget.prd['id']);
+  }
+
+  updateFavorite() {
+    ref.read(favoriteProvider.notifier).update(
+          Favorite(prdId: widget.prd['id']),
+        );
+    getFav();
+  }
+
   var carpage = 0;
   CarouselController carouselController = CarouselController();
   var ico = true;
 
   @override
   Widget build(BuildContext context) {
+    getFav();
     var _height = 250.0;
     var maxhe = MainAxisSize.max;
     List butonlar = ["önerilenler", "detaylar"];
     return Scaffold(
-      appBar: ico ? _defaultBar() : _editingBar(),
+      appBar: isFav ? _editingBar() : _defaultBar(),
       body: Container(
         padding: EdgeInsets.only(top: 16.0),
         height: MediaQuery.of(context).size.height,
@@ -48,14 +64,18 @@ class _ProductDetail extends ConsumerState<ProductDetail> {
                         maxHeight: _height,
                         maxWidth: _height,
                       ),
-                      child: Image.asset(
-                        widget.prd['img'], //list isn't null
-                        // height: _height - 30,
-                        // width: _height - 30,
-                        height: MediaQuery.of(context).size.height / 4,
-                        width: MediaQuery.of(context).size.width / 2,
-
-                        fit: BoxFit.cover,
+                      child: GestureDetector(
+                        onDoubleTap: () {
+                          updateFavorite();
+                        },
+                        child: Image.asset(
+                          widget.prd['img'], //list isn't null
+                          // height: _height - 30,
+                          // width: _height - 30,
+                          height: MediaQuery.of(context).size.height / 4,
+                          width: MediaQuery.of(context).size.width / 2,
+                          fit: BoxFit.cover,
+                        ),
                       ),
                     ),
                     Container(
@@ -244,12 +264,12 @@ class _ProductDetail extends ConsumerState<ProductDetail> {
       centerTitle: true,
       actions: <Widget>[
         IconButton(
-            icon: Icon(Icons.star_border),
+            icon: Icon(
+              Icons.star_border,
+              color: Colors.amber,
+            ),
             onPressed: () {
-              //add favorite func
-              setState(() {
-                ico = false;
-              });
+              updateFavorite();
             })
       ],
       backgroundColor: Color(0xFF5AA9E6),
@@ -269,12 +289,10 @@ class _ProductDetail extends ConsumerState<ProductDetail> {
       centerTitle: true,
       actions: <Widget>[
         IconButton(
-            icon: Icon(Icons.star),
+            icon: Icon(Icons.star, color: Colors.amber),
             onPressed: () {
               //add favorite func
-              setState(() {
-                ico = true;
-              });
+              updateFavorite();
             })
       ],
       backgroundColor: Color(0xFF5AA9E6),

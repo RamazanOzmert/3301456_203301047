@@ -94,4 +94,15 @@ class BasketNotifier extends StateNotifier<List<Basket>> {
       i += 1;
     }
   }
+
+  void remove({required String prdId}) {
+    state = [
+      for (final item in state)
+        if (item.prdId != prdId) item
+    ];
+  }
+
+  void removeAll() {
+    state = [];
+  }
 }

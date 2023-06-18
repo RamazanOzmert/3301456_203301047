@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:marketapp/globalStates/user.dart';
@@ -34,27 +33,45 @@ class _UsrProfile extends ConsumerState<UsrProfile> {
         ),
       ),
       body: Column(children: [
-        Container(
-          width: MediaQuery.of(context).size.width,
-          height: MediaQuery.of(context).size.height / 4,
-          color: Color.fromARGB(217, 252, 211, 62),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: users
-                .map((user) => Wrap(
-                      spacing: 15,
-                      direction: Axis.vertical,
-                      runAlignment: WrapAlignment.center,
-                      crossAxisAlignment: WrapCrossAlignment.center,
-                      children: [
-                        Text(user.name),
-                        Text(user.surname),
-                        Text(user.email),
-                        Text(user.password),
-                      ],
-                    ))
-                .toList(),
-          ),
+        Flexible(
+          flex: 1,
+          child: Container(
+              width: MediaQuery.of(context).size.width,
+              height: 160,
+              //color: Color.fromARGB(217, 252, 211, 62),
+              child: Stack(
+                children: [
+                  Container(
+                    color: Color.fromARGB(255, 102, 186, 249),
+                    height: 120,
+                  ),
+                  Align(
+                    alignment: Alignment.bottomCenter,
+                    child: Container(
+                      //margin: EdgeInsets.all(50.0),
+                      width: 105,
+                      height: 105,
+                      decoration: BoxDecoration(
+                        color: Colors.orange,
+                        shape: BoxShape.circle,
+                        border: Border.all(color: Colors.white, width: 5.0),
+                      ),
+                      child: ClipRRect(
+                        borderRadius: new BorderRadius.circular(150.0),
+                        child: Image.asset(
+                          'assets/images/firstPage.jpg',
+                          width: 100,
+                          height: 100,
+                          fit: BoxFit.fitHeight,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              )),
+        ),
+        SizedBox(
+          height: 50,
         ),
         Flexible(
           flex: 1,

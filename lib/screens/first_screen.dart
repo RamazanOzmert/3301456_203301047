@@ -5,9 +5,14 @@ import 'package:marketapp/screens/usr_register.dart';
 import 'package:marketapp/widgets/logo_bar.dart';
 import 'package:marketapp/screens/main_screen.dart';
 
-class FirstPage extends StatelessWidget {
+class FirstPage extends StatefulWidget {
   const FirstPage({Key? key}) : super(key: key);
 
+  State createState() => _FirstPage();
+}
+
+class _FirstPage extends State<FirstPage> {
+  var rsize = 250.0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,15 +46,21 @@ class FirstPage extends StatelessWidget {
             ),
           ),
           Expanded(
-              flex: 5,
+            flex: 5,
+            child: GestureDetector(
+              onLongPress: () {
+                setState(() {
+                  rsize == 250.0 ? rsize = 150.0 : rsize = 250.0;
+                });
+              },
               child: Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Container(
                       //margin: EdgeInsets.all(50.0),
-                      width: 250,
-                      height: 250,
+                      width: rsize,
+                      height: rsize,
                       decoration: BoxDecoration(
                         color: Colors.orange,
                         shape: BoxShape.circle,
@@ -58,13 +69,15 @@ class FirstPage extends StatelessWidget {
                         borderRadius: new BorderRadius.circular(150.0),
                         child: Image.asset(
                           'assets/images/firstPage.jpg',
-                          width: 250,
-                          height: 250,
-                          fit: BoxFit.fill,
+                          width: rsize,
+                          height: rsize,
+                          fit: BoxFit.fitHeight,
                         ),
                       ),
                     ),
-                  ])),
+                  ]),
+            ),
+          ),
           Expanded(
             flex: 3,
             child: Container(

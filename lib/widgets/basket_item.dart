@@ -18,7 +18,6 @@ class _BasketItem extends ConsumerState<BasketItem> {
   }
 
   var adet = 0;
-
   Future getTotal() async {
     var t;
     var baskets = ref.watch(basketsProvider);
@@ -42,6 +41,12 @@ class _BasketItem extends ConsumerState<BasketItem> {
         );
   }
 
+  remove() {
+    ref.read(basketsProvider.notifier).remove(
+          prdId: widget.prd['id'],
+        );
+  }
+
   updateFavorite() {
     ref.read(favoriteProvider.notifier).update(
           Favorite(prdId: widget.prd['id']),
@@ -60,153 +65,164 @@ class _BasketItem extends ConsumerState<BasketItem> {
     var favPrd = ref.watch(favoriteProvider);
     getTotal();
     getFav();
-    return Container(
-      width: MediaQuery.of(context).size.width,
-      color: Colors.white,
-      child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-        Container(
-          padding: EdgeInsets.all(15),
-          height: 105.0,
-          width: MediaQuery.of(context).size.width - 30,
-          decoration: const BoxDecoration(
-              color: Colors.white,
-              border: Border(bottom: BorderSide(color: Colors.grey, width: 1))),
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Flexible(
-                flex: 1,
-                fit: FlexFit.tight,
-                child: Image.asset(
-                  widget.prd['img'],
-                  height: 100,
-                  width: 100,
-                  fit: BoxFit.cover,
+    return GestureDetector(
+      onHorizontalDragEnd: (details) {
+        remove();
+      },
+      child: Container(
+        width: MediaQuery.of(context).size.width,
+        color: Colors.white,
+        child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+          Container(
+            padding: EdgeInsets.all(15),
+            height: 105.0,
+            width: MediaQuery.of(context).size.width - 30,
+            decoration: const BoxDecoration(
+                color: Colors.white,
+                border:
+                    Border(bottom: BorderSide(color: Colors.grey, width: 1))),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Flexible(
+                  flex: 1,
+                  fit: FlexFit.tight,
+                  child: Image.asset(
+                    widget.prd['img'],
+                    height: 100,
+                    width: 100,
+                    fit: BoxFit.cover,
+                  ),
                 ),
-              ),
-              Flexible(
-                flex: 2,
-                fit: FlexFit.tight,
-                child: Container(
-                    height: 60,
-                    padding: EdgeInsets.only(left: 10),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          widget.prd['name'],
-                          style: TextStyle(fontSize: 13.0, color: Colors.black),
-                        ),
-                        Text(
-                          widget.prd['property'],
-                          style: TextStyle(fontSize: 12.0, color: Colors.grey),
-                        ),
-                        Text(
-                          widget.prd['price'],
-                          style: const TextStyle(
-                              fontSize: 15.0,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.blue),
-                        ),
-                      ],
-                    )),
-              ),
-              Flexible(
-                flex: 1,
-                fit: FlexFit.tight,
-                child: Column(
-                  children: [
-                    Container(
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.all(Radius.circular(5.0)),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey.withOpacity(0.2),
-                              spreadRadius: 5,
-                              blurRadius: 7,
-                              offset:
-                                  Offset(0, 3), // changes position of shadow
-                            ),
-                          ]),
-                      child: Row(
+                Flexible(
+                  flex: 2,
+                  fit: FlexFit.tight,
+                  child: Container(
+                      height: 60,
+                      padding: EdgeInsets.only(left: 10),
+                      child: Column(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Container(
-                            width: 20,
-                            height: 25,
-                            child: TextButton(
-                              style: TextButton.styleFrom(
-                                minimumSize: Size.zero,
-                                padding: EdgeInsets.zero,
-                              ),
-                              onPressed: () {
-                                decrease();
-                              },
-                              child: const Center(
-                                  child: Icon(
-                                Icons.remove,
-                                color: Colors.blue,
-                              )),
-                            ),
+                          Text(
+                            widget.prd['name'],
+                            style:
+                                TextStyle(fontSize: 13.0, color: Colors.black),
                           ),
-                          Container(
-                            width: 30,
-                            height: 25,
-                            color: Colors.blue[400],
-                            child: Center(
-                              child: Text(
-                                adet.toString(),
-                                style: const TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.white),
-                              ),
-                            ),
+                          Text(
+                            widget.prd['property'],
+                            style:
+                                TextStyle(fontSize: 12.0, color: Colors.grey),
                           ),
-                          Container(
-                            width: 20,
-                            height: 25,
-                            child: TextButton(
-                              style: TextButton.styleFrom(
-                                minimumSize: Size.zero,
-                                padding: EdgeInsets.zero,
-                              ),
-                              onPressed: () {
-                                increase();
-                              },
-                              child: const Center(
-                                  child: Icon(
-                                Icons.add,
-                                color: Colors.blue,
-                              )),
-                            ),
+                          Text(
+                            widget.prd['price'],
+                            style: const TextStyle(
+                                fontSize: 15.0,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.blue),
                           ),
                         ],
-                      ),
-                    ),
-                    Container(
-                      child: isFav
-                          ? IconButton(
-                              onPressed: () {
-                                updateFavorite();
-                              },
-                              icon: const Icon(Icons.star))
-                          : IconButton(
-                              onPressed: () {
-                                updateFavorite();
-                              },
-                              icon: const Icon(Icons.star_border),
-                            ),
-                    ),
-                  ],
+                      )),
                 ),
-              ),
-            ],
-          ),
-        )
-      ]),
+                Flexible(
+                  flex: 1,
+                  fit: FlexFit.tight,
+                  child: Column(
+                    children: [
+                      Container(
+                        child: isFav
+                            ? IconButton(
+                                onPressed: () {
+                                  updateFavorite();
+                                },
+                                icon:
+                                    const Icon(Icons.star, color: Colors.amber))
+                            : IconButton(
+                                onPressed: () {
+                                  updateFavorite();
+                                },
+                                icon: const Icon(Icons.star_border,
+                                    color: Colors.amber),
+                              ),
+                      ),
+                      Container(
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(5.0)),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.grey.withOpacity(0.2),
+                                spreadRadius: 5,
+                                blurRadius: 7,
+                                offset:
+                                    Offset(0, 3), // changes position of shadow
+                              ),
+                            ]),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Container(
+                              width: 20,
+                              height: 25,
+                              child: TextButton(
+                                style: TextButton.styleFrom(
+                                  minimumSize: Size.zero,
+                                  padding: EdgeInsets.zero,
+                                ),
+                                onPressed: () {
+                                  decrease();
+                                },
+                                child: const Center(
+                                    child: Icon(
+                                  Icons.remove,
+                                  color: Colors.blue,
+                                )),
+                              ),
+                            ),
+                            Container(
+                              width: 30,
+                              height: 25,
+                              color: Colors.blue[400],
+                              child: Center(
+                                child: Text(
+                                  adet.toString(),
+                                  style: const TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.white),
+                                ),
+                              ),
+                            ),
+                            Container(
+                              width: 20,
+                              height: 25,
+                              child: TextButton(
+                                style: TextButton.styleFrom(
+                                  minimumSize: Size.zero,
+                                  padding: EdgeInsets.zero,
+                                ),
+                                onPressed: () {
+                                  increase();
+                                },
+                                child: const Center(
+                                    child: Icon(
+                                  Icons.add,
+                                  color: Colors.blue,
+                                )),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          )
+        ]),
+      ),
     );
   }
 }

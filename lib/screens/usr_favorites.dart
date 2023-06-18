@@ -2,31 +2,40 @@ import 'package:flutter/material.dart';
 import 'package:marketapp/globalStates/address.dart';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:marketapp/globalStates/favorites.dart';
+import 'package:marketapp/util/products.dart';
 
 import 'package:marketapp/widgets/address_item.dart';
+import 'package:marketapp/widgets/favorite_item.dart';
 
-class UserFavories extends ConsumerStatefulWidget {
-  const UserFavories({Key? key}) : super(key: key);
+class UserFavorites extends ConsumerStatefulWidget {
+  const UserFavorites({Key? key}) : super(key: key);
 
-  ConsumerState<UserFavories> createState() => _UserFavories();
+  ConsumerState<UserFavorites> createState() => _UserFavorites();
 }
 
-class _UserFavories extends ConsumerState<UserFavories> {
+class _UserFavorites extends ConsumerState<UserFavorites> {
   @override
   void initState() {
     super.initState();
   }
 
-  var _name;
-  var _address;
-  addAddress() {
-    ref.read(addressesProvider.notifier).add(_name, _address);
+  var favoriteItems = [];
+  getPrd() {
+    var favorites = ref.watch(favoriteProvider);
+    var lis = [];
+    favorites.forEach((item) {
+      products.forEach((p) {
+        if (item.prdId == p['id']) lis.add(p);
+      });
+    });
+    favoriteItems = lis;
   }
 
   @override
   Widget build(BuildContext context) {
-    var adr = ref.watch(addressesProvider);
-
+    var fav = ref.watch(favoriteProvider);
+    getPrd();
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color(0xFF5AA9E6),
@@ -46,17 +55,10 @@ class _UserFavories extends ConsumerState<UserFavories> {
           padding: EdgeInsets.all(0),
           child: ListView(
             children: [
-              GestureDetector(
-                child: const Card(
-                  elevation: 2,
-                  child: ListTile(
-                    leading: const Icon(Icons.plus_one),
-                    title: Text('adres ekle'),
-                  ),
-                ),
-              ),
               Wrap(
-                children: adr.map((_adr) => AddressItem(adr: _adr)).toList(),
+                children: favoriteItems
+                    .map((_fav) => FavoriteItem(fav: _fav))
+                    .toList(),
               ),
             ],
           )),

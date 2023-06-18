@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:marketapp/globalStates/basket.dart';
+import 'package:marketapp/globalStates/orders.dart';
 
 import 'package:marketapp/util/products.dart';
 import 'package:marketapp/widgets/basket_item.dart';
@@ -20,12 +21,16 @@ class _BasketPage extends ConsumerState<BasketPage> {
   }
 
   var basketitems = [];
+  var basketItemsId = [];
   getPrd() {
     var baskets = ref.watch(basketsProvider);
     var lis = [];
     baskets.forEach((item) {
       products.forEach((p) {
-        if (item.prdId == p['id']) lis.add(p);
+        if (item.prdId == p['id']) {
+          lis.add(p);
+          basketItemsId.add(item.prdId);
+        }
       });
     });
     basketitems = lis;
@@ -45,6 +50,20 @@ class _BasketPage extends ConsumerState<BasketPage> {
     });
     t = double.parse(t.toStringAsFixed(2));
     return t == 0.0 ? "0" : t.toString();
+  }
+
+  setOrder() {
+    var len = ref.watch(ordersProvider).length;
+    ref.read(ordersProvider.notifier).add(
+          Order(
+            orderId: len.toString(),
+            prdId: basketItemsId,
+            total: total,
+            date: DateTime.now(),
+            orderDetail: 'sipariş alındı',
+            stance: "1",
+          ),
+        );
   }
 
   var carpage = 0;
@@ -100,7 +119,8 @@ class _BasketPage extends ConsumerState<BasketPage> {
                         padding: EdgeInsets.zero,
                       ),
                       onPressed: () {
-                        //confirm the basket func
+                        setOrder();
+                        ref.read(basketsProvider.notifier).removeAll();
                       },
                       child: const Text(
                         'Sepeti Onayla',

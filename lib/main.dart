@@ -23,3 +23,7 @@ class _MyAppState extends State<MyApp> {
     );
   }
 }
+
+
+//CollaectApi
+//https://collectapi.com/tr/api/shopping/e-ticaret-api
