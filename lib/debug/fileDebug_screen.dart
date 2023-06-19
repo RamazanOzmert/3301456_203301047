@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:marketapp/files/ordersFile.dart';
+import 'package:marketapp/globalStates/favorites.dart';
+import 'package:marketapp/sqflite/sql_favorites.dart';
 import 'package:marketapp/util/api.dart';
 import 'package:http/http.dart' as http;
 
@@ -12,27 +14,18 @@ class FileDebug extends ConsumerStatefulWidget {
 
 class _FileDebug extends ConsumerState<FileDebug> {
   late Future<Product> futureAlbum;
+  late Future<List<Favorite>> sql;
   @override
   void initState() {
     super.initState();
     futureAlbum = fetchAlbum();
+
+    SqlFavorite fav = new SqlFavorite();
+    sql = fav.favorites();
   }
 
   var file;
   var value;
-  var res;
-  gethttp() async {
-    final _headers = {
-      'content-type': "application/json",
-      'authorization': "apikey 0dSPv5ymtgPssJfcsgi1QE:4dHTfXYOAgFG4IcTmd2XfO"
-    };
-    final response =
-        await http.get(Uri.parse('https://fakestoreapi.com/products/1'));
-
-    setState(() {
-      res = response.body + response.hashCode.toString();
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -63,13 +56,19 @@ class _FileDebug extends ConsumerState<FileDebug> {
                   onPressed: () => setState(() {
                     value = 2;
                   }),
-                  child: Text('file test'),
+                  child: Text('File Test'),
                 ),
                 ElevatedButton(
                   onPressed: () => setState(() {
                     value = 1;
                   }),
-                  child: Text('APİ TEST'),
+                  child: Text('Api Test'),
+                ),
+                ElevatedButton(
+                  onPressed: () => setState(() {
+                    value = 3;
+                  }),
+                  child: Text('Sql Test'),
                 ),
               ]),
             ),
@@ -94,9 +93,19 @@ class _FileDebug extends ConsumerState<FileDebug> {
           future: futureAlbum,
           builder: (context, snapshot) {
             if (snapshot.hasData) {
-              return Text(snapshot.data!.title);
+              return Text(snapshot.data!.id.toString() +
+                  " \n\n" +
+                  snapshot.data!.title +
+                  " \n\n" +
+                  snapshot.data!.category +
+                  " \n\n" +
+                  snapshot.data!.description +
+                  " \n\n" +
+                  snapshot.data!.image +
+                  " \n\n" +
+                  snapshot.data!.price.toString());
             } else if (snapshot.hasError) {
-              return Text('${snapshot.error},asdada');
+              return Text('${snapshot.error}');
             }
 
             // By default, show a loading spinner.
@@ -118,6 +127,22 @@ class _FileDebug extends ConsumerState<FileDebug> {
                 ));
           return Text(file.toString());
         }
+
+      case 3:
+        return FutureBuilder<List<Favorite>>(
+          future: sql,
+          builder: (context, snapshot) {
+            if (snapshot.hasData) {
+              return Text("database:\n" +
+                  snapshot.data!.map((e) => e.prdId).toString());
+            } else if (snapshot.hasError) {
+              return Text('${snapshot.error}');
+            }
+
+            // By default, show a loading spinner.
+            return const CircularProgressIndicator();
+          },
+        );
 
       default:
         Text('debug console');

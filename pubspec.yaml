@@ -14,12 +14,14 @@ dependencies:
     sdk: flutter
   carousel_slider: ^4.0.0
   app_version: ^0.0.2
-
   cupertino_icons: ^1.0.2
   google_fonts: ^2.1.1
   flutter_riverpod: ^2.3.2
   path_provider: ^2.0.14
   http: ^0.13.6
+  sqflite: ^2.2.8+4
+  path: ^1.8.2
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

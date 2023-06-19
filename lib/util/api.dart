@@ -1,5 +1,5 @@
 import 'dart:convert';
-
+import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 Future<Product> fetchAlbum() async {
@@ -16,7 +16,7 @@ Future<Product> fetchAlbum() async {
   }
 }
 
-//CREATE AN ALBUM CLASS
+@immutable
 class Product {
   final int id;
   final String title;

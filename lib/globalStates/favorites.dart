@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:marketapp/sqflite/sql_favorites.dart';
 
 final favoriteProvider =
     StateNotifierProvider<BasketNotifier, List<Favorite>>((ref) {
@@ -21,6 +22,12 @@ class Favorite {
     required this.prdId,
   });
 
+  Map<String, dynamic> toMap() {
+    return {
+      'prdId': prdId,
+    };
+  }
+
   Favorite copyWith({
     String? prdId,
   }) {
@@ -32,6 +39,7 @@ class Favorite {
 
 class BasketNotifier extends StateNotifier<List<Favorite>> {
   BasketNotifier({favorites}) : super(favorites);
+  SqlFavorite sql = new SqlFavorite();
   //add favorite list
   void update(Favorite favorite) {
     var prdId = favorite.prdId;
@@ -52,11 +60,13 @@ class BasketNotifier extends StateNotifier<List<Favorite>> {
   }
 
   void add(Favorite favorite) {
+    sql.insertFavorite(favorite);
     state = [...state, favorite];
   }
 
   //remove favorite list
   void remove(String prdId) {
+    sql.deleteFavorite(prdId);
     state = [
       for (final item in state)
         if (item.prdId != prdId) item
