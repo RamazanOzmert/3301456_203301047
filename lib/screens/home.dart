@@ -27,9 +27,9 @@ class _Home extends State<Home> {
       child: Scaffold(
           appBar: LogoBar(),
           body: ListView(children: [
-            AddressRow(),
+            const AddressRow(),
             buildCategoryWrap(context),
-            SizedBox(
+            const SizedBox(
               height: 15,
             )
           ])),
@@ -39,7 +39,7 @@ class _Home extends State<Home> {
   buildCategoryWrap(BuildContext context) {
     return Center(
       child: Padding(
-        padding: EdgeInsets.only(top: 8.0),
+        padding: const EdgeInsets.only(top: 8.0),
         child: Wrap(
           spacing: 8.0,
           runSpacing: 8.0,

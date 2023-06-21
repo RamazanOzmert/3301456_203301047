@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:marketapp/firebase/auth.dart';
 
 final usersProvider = StateNotifierProvider<UserNotifier, List<User>>((ref) {
   return UserNotifier(users: [
@@ -43,7 +44,18 @@ class UserNotifier extends StateNotifier<List<User>> {
   UserNotifier({users}) : super(users);
 
   void add(User user) {
-    state = [...state, user];
+    createUser(
+      user.name,
+      user.surname,
+      user.email,
+      user.password,
+    );
+    debugPrint('user created: ' + createUser.toString());
+
+    //single profil
+    state = [user];
+    //multi profile
+    //state = [...state, user];
   }
 
   void changeName(String _name) {

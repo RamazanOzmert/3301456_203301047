@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
-class LogoBar extends StatefulWidget with PreferredSizeWidget {
+class LogoBar extends StatefulWidget implements PreferredSizeWidget {
+  const LogoBar({super.key});
+
   @override
   _LogoBar createState() => _LogoBar();
 

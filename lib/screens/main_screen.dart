@@ -81,7 +81,7 @@ class _MainScreen extends State<MainScreen> {
           size: 24.0,
         ),
         color: _page == index
-            ? Theme.of(context).accentColor
+            ? Theme.of(context).canvasColor
             : Theme.of(context).focusColor,
         onPressed: () => _pageController.jumpToPage(index),
       ),

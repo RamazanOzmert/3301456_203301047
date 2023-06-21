@@ -161,14 +161,14 @@ class _AddressRow extends ConsumerState<AddressRow> {
                     TextButton.icon(
                       icon: Icon(
                         Icons.location_on_outlined,
-                        color: Theme.of(context).accentColor,
+                        color: Theme.of(context).canvasColor,
                         size: 20,
                       ),
                       style: TextButton.styleFrom(padding: EdgeInsets.zero),
                       label: Text(
                         'Adreslerim',
                         style: TextStyle(
-                          color: Theme.of(context).accentColor,
+                          color: Theme.of(context).canvasColor,
                           fontSize: 12,
                           fontWeight: FontWeight.w600,
                           decoration: TextDecoration.underline,
@@ -226,14 +226,14 @@ class _AddressRow extends ConsumerState<AddressRow> {
                       TextButton.icon(
                         icon: Icon(
                           Icons.add,
-                          color: Theme.of(context).accentColor,
+                          color: Theme.of(context).canvasColor,
                         ),
                         style: TextButton.styleFrom(padding: EdgeInsets.zero),
                         onPressed: () {},
                         label: Text(
                           'adres ekle',
                           style: TextStyle(
-                            color: Theme.of(context).accentColor,
+                            color: Theme.of(context).canvasColor,
                           ),
                         ),
                       ),

@@ -52,7 +52,7 @@ class Declaration extends StatelessWidget {
                     Text(
                       "Kampanya Kodu Ekle",
                       style: TextStyle(
-                        color: Theme.of(context).accentColor,
+                        color: Theme.of(context).canvasColor,
                         fontSize: 16,
                         fontWeight: FontWeight.w500,
                       ),
@@ -120,7 +120,7 @@ class Declaration extends StatelessWidget {
         cursorHeight: 24,
         decoration: InputDecoration(
             fillColor: Colors.white,
-            iconColor: Theme.of(context).accentColor,
+            iconColor: Theme.of(context).canvasColor,
             hintText: 'Kampanya Kodunu Girin'),
       ),
     );

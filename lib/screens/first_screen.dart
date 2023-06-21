@@ -31,14 +31,14 @@ class _FirstPage extends State<FirstPage> {
                     Text(
                       'Favori alışveriş',
                       style: TextStyle(
-                        color: Theme.of(context).accentColor,
+                        color: Theme.of(context).canvasColor,
                         fontSize: 26,
                       ),
                     ),
                     Text(
                       'uygulamanıza hoş geldiniz',
                       style: TextStyle(
-                        color: Theme.of(context).accentColor,
+                        color: Theme.of(context).canvasColor,
                         fontSize: 26,
                       ),
                     ),

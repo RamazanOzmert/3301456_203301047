@@ -51,7 +51,7 @@ class _DeclarationDetail extends State<DeclarationDetail> {
                         Text(
                           widget.campaign!['title'],
                           style: TextStyle(
-                            color: Theme.of(context).accentColor,
+                            color: Theme.of(context).canvasColor,
                             fontWeight: FontWeight.w500,
                           ),
                         ),

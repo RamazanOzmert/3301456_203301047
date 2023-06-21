@@ -24,7 +24,8 @@ class Constants {
     ),
     cardColor: Colors.white,
     bottomAppBarColor: Colors.white,
-    accentColor: lightDarkBlue,
+    canvasColor: lightDarkBlue,
+    //accentColor: lightDarkBlue,
     //cursorColor: lightDarkBlue,
     scaffoldBackgroundColor: lightBgGrey,
 

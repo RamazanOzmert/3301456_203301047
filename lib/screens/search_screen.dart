@@ -99,7 +99,7 @@ class _Products extends State<Search> {
               Icons.search,
               size: 30,
             ),
-            iconColor: Theme.of(context).accentColor,
+            iconColor: Theme.of(context).canvasColor,
             hintText: 'Ürün ara'),
       ),
     );

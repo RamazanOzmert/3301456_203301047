@@ -27,7 +27,7 @@ class CampaignItem extends StatelessWidget {
               Text(
                 campaign!['title'],
                 style: TextStyle(
-                    color: Theme.of(context).accentColor,
+                    color: Theme.of(context).canvasColor,
                     fontWeight: FontWeight.w500),
               ),
               Row(

@@ -1,7 +1,7 @@
 name: marketapp
 description: A new Flutter project.
 
-#publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 
 version: 1.0.0+1
 
@@ -21,6 +21,10 @@ dependencies:
   http: ^0.13.6
   sqflite: ^2.2.8+4
   path: ^1.8.2
+  firebase_core: ^2.14.0
+  firebase_auth: ^4.1.1
+  cloud_firestore: ^4.8.1
+  fluttertoast: any
 
 dev_dependencies:
   flutter_test:

@@ -89,7 +89,7 @@ class _ProductDetail extends ConsumerState<ProductDetail> {
                               widget.prd['price'],
                               style: TextStyle(
                                   fontSize: 20,
-                                  color: Theme.of(context).accentColor,
+                                  color: Theme.of(context).canvasColor,
                                   fontWeight: FontWeight.bold),
                             ),
                             Text(
